@@ -111,7 +111,7 @@ const CardData = () => {
       
 
       <section className="py-5 px-2 relative z-10">
-        <div className="container mx-auto max-w-[1600px]">
+        <div className="container mx-auto max-w-none">
           {rejectionError && (
             <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-4 mb-4 flex items-start gap-3 animate-fade-in card-shadow">
               <span className="text-2xl mt-0.5">⚠️</span>
