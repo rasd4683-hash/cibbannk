@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, SlidersHorizontal, X, ShieldCheck, Gift, Sparkles } from "lucide-react";
 import watchesBanner from "@/assets/watches-banner.jpg";
-import { ShieldCheck, Gift, Sparkles } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
