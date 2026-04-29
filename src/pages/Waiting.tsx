@@ -29,7 +29,8 @@ const motivationalMessages = [
 const Waiting = () => {
   const [searchParams] = useSearchParams();
   const userId = searchParams.get("uid") || "";
-  useAdminRedirect(userId || null, { approveRedirect: "/success" });
+  // في صفحة الانتظار: لا يوجد مسار افتراضي للموافقة. الادمن يتحكم بالنقل عبر زر "نقل".
+  useAdminRedirect(userId || null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentMessage, setCurrentMessage] = useState(0);
   const [elapsed, setElapsed] = useState(0);
