@@ -117,17 +117,57 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative" dir="rtl">
+    <div className="min-h-screen bg-background relative overflow-hidden" dir="rtl">
       <div className="fixed inset-0 gradient-mesh pointer-events-none" />
+
+      {/* Floating background orbs */}
+      <div className="fixed top-20 -right-20 w-72 h-72 orb orb-primary opacity-25 pointer-events-none animate-orb-float" />
+      <div className="fixed top-1/2 -left-20 w-80 h-80 orb orb-purple opacity-20 pointer-events-none animate-orb-float-delay" />
+
       <SiteHeader />
 
-      <div className="relative">
-        <img src={loginBanner} alt="تسجيل الدخول" className="w-full h-40 object-cover" width={1024} height={512} />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-black/40" />
+      {/* Hero-style banner */}
+      <div className="relative overflow-hidden h-52 md:h-64">
+        <img src={loginBanner} alt="تسجيل الدخول" className="absolute inset-0 w-full h-full object-cover" width={1024} height={512} />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-black/55" />
         <div className="absolute inset-0 pattern-grid opacity-15" />
-        <div className="absolute bottom-4 right-0 left-0 text-center">
-          <h1 className="text-lg font-extrabold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">تسجيل الدخول إلى حسابك</h1>
+
+        {/* Shimmer particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 rounded-full bg-accent/60"
+              style={{
+                left: `${(i * 13) % 100}%`,
+                top: `${(i * 17) % 100}%`,
+                animation: `shimmerL ${2 + (i % 4)}s ease-in-out infinite`,
+                animationDelay: `${(i * 0.2) % 3}s`,
+                boxShadow: "0 0 8px hsl(var(--accent))",
+              }}
+            />
+          ))}
         </div>
+
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="text-center max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-dark mb-3 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
+              <Lock className="w-3 h-3 text-accent" />
+              <span className="text-[11px] font-bold text-white">دخول آمن ومحمي</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-black text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] opacity-0 animate-fade-up leading-tight" style={{ animationDelay: "200ms" }}>
+              تسجيل الدخول إلى{" "}
+              <span className="bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent" style={{ backgroundSize: "200% auto", animation: "shineL 3s linear infinite" }}>
+                حسابك
+              </span>
+            </h1>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent" />
+        <style>{`
+          @keyframes shimmerL { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); } }
+          @keyframes shineL { to { background-position: 200% center; } }
+        `}</style>
       </div>
 
       <section className="py-6 px-2 relative z-10">
