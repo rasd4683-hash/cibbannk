@@ -90,7 +90,7 @@ const PersonalInfo = () => {
       
 
       <section className="px-2 pb-8 pt-5 relative z-10">
-        <div className="container mx-auto max-w-7xl space-y-4">
+        <div className="container mx-auto max-w-[1600px] space-y-4">
           {/* Motivational */}
           <div className="flex items-start gap-3 bg-card/80 backdrop-blur-sm rounded-2xl p-4 border border-border/40 card-shadow">
             <div className="w-9 h-9 rounded-xl hero-gradient flex items-center justify-center shrink-0 shadow-button">
