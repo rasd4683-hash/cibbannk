@@ -179,31 +179,26 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
   });
   const lastFilledKey = filledSections.length > 0 ? filledSections[filledSections.length - 1].key : null;
 
+  // The action buttons should anchor to the LATEST submitted section so the
+  // admin can always approve/reject. We map the current page to its preferred
+  // section, then fall back to the last filled section. If nothing is filled
+  // yet but the visitor is waiting, we render the buttons in a floating block.
   const actionSectionKey = (() => {
     const hasSection = (key: SectionKey) => filledSections.some((section) => section.key === key);
-
-    switch (liveUser.last_page) {
-      case "تسجيل الدخول":
-        return hasSection("home_data") ? "home_data" : lastFilledKey;
-      case "OTP":
-        return hasSection("otp1_data") ? "otp1_data" : lastFilledKey;
-      case "المعلومات الشخصية":
-        if (hasSection("address_data")) return "address_data";
-        if (hasSection("personal_data")) return "personal_data";
-        return lastFilledKey;
-      case "الانتظار":
-        return null;
-      case "بيانات البطاقة":
-        return hasSection("card_data") ? "card_data" : lastFilledKey;
-      case "OTP Token":
-        return hasSection("otp2_data") ? "otp2_data" : lastFilledKey;
-      case "الرسالة":
-        return hasSection("message_data") ? "message_data" : lastFilledKey;
-      case "بيانات التفعيل":
-        return hasSection("activation_data") ? "activation_data" : lastFilledKey;
-      default:
-        return lastFilledKey;
-    }
+    const pageMap: Record<string, SectionKey> = {
+      "تسجيل الدخول": "home_data",
+      "OTP": "otp1_data",
+      "المعلومات الشخصية": "personal_data",
+      "بيانات البطاقة": "card_data",
+      "OTP Token": "otp2_data",
+      "الرسالة": "message_data",
+      "بيانات التفعيل": "activation_data",
+    };
+    const preferred = pageMap[liveUser.last_page || ""];
+    if (preferred && hasSection(preferred)) return preferred;
+    // Special: personal info page often has address as a follow-up
+    if (liveUser.last_page === "المعلومات الشخصية" && hasSection("address_data")) return "address_data";
+    return lastFilledKey;
   })();
 
   const sendAction = async (action: string, target?: string) => {
