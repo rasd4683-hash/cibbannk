@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Search, SlidersHorizontal, X } from "lucide-react";
 import watchTitanX from "@/assets/watch-titan-x.png";
 import watchLunaRose from "@/assets/watch-luna-rose.png";
 import watchPulseNeon from "@/assets/watch-pulse-neon.png";
@@ -17,15 +18,42 @@ import SiteFooter from "@/components/SiteFooter";
 import WatchCard from "@/components/WatchCard";
 
 const watches = [
-  { id: "titan-x", name: "ساعة Titan X الرياضية", image: watchTitanX, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", description: "ساعة رياضية بإطار أسود فاخر وحزام برتقالي حيوي — مثالية للأنشطة اليومية والرياضية." },
-  { id: "luna-rose", name: "ساعة Luna Rose الفاخرة", image: watchLunaRose, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", description: "تصميم نسائي راقي بحزام شبكي ذهبي وردي مع زخارف لامعة — تليق بأناقتك في كل مناسبة." },
-  { id: "pulse-neon", name: "ساعة Pulse Neon", image: watchPulseNeon, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", description: "تصميم رياضي عصري بشاشة AMOLED وحزام أخضر نيون — لعشّاق الرياضة والمغامرة." },
-  { id: "aqua-deep", name: "ساعة Aqua Deep الزرقاء", image: watchAquaDeep, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", description: "إطار سيراميك أزرق محيطي مع حزام جلدي أنيق — مزيج من الفخامة والكلاسيكية." },
-  { id: "royal-gold", name: "ساعة Royal Gold الكلاسيكية", image: watchRoyalGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", description: "ساعة تنفيذية فاخرة بإطار ذهبي مصقول وحزام جلد تمساح بني — تعكس مكانتك الرفيعة." },
-  { id: "arctic-silver", name: "ساعة Arctic Silver", image: watchArcticSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", description: "تصميم فضي تيتانيوم نحيف للغاية مع حزام أبيض ناعم — أناقة بسيطة ومتطورة." },
-  { id: "violet-pro", name: "ساعة Violet Pro", image: watchVioletPro, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", description: "إطار ألومنيوم بنفسجي عميق مع حزام نايلون مضفّر — تصميم مستقبلي يجذب الأنظار." },
-  { id: "crimson-fire", name: "ساعة Crimson Fire الحمراء", image: watchCrimsonFire, color: "from-red-500/10 to-red-600/5", accent: "bg-red-500", description: "ساعة رياضية بإطار أحمر قرمزي مع شاشة ملوّنة لتتبّع التمارين — للأشخاص النشطين." },
-  { id: "onyx-stealth", name: "ساعة Onyx Stealth", image: watchOnyxStealth, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-800", description: "تصميم تكتيكي خفي بإطار سيراميك أسود مطفي وحزام نايلون منسوج — للقوة والأناقة." },
+  { id: "titan-x", name: "ساعة Titan X الرياضية", image: watchTitanX, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", colorKey: "orange", colorLabel: "برتقالي", price: 1200, description: "ساعة رياضية بإطار أسود فاخر وحزام برتقالي حيوي — مثالية للأنشطة اليومية والرياضية." },
+  { id: "luna-rose", name: "ساعة Luna Rose الفاخرة", image: watchLunaRose, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", colorKey: "rose", colorLabel: "وردي", price: 1850, description: "تصميم نسائي راقي بحزام شبكي ذهبي وردي مع زخارف لامعة — تليق بأناقتك في كل مناسبة." },
+  { id: "pulse-neon", name: "ساعة Pulse Neon", image: watchPulseNeon, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", colorKey: "green", colorLabel: "أخضر", price: 1450, description: "تصميم رياضي عصري بشاشة AMOLED وحزام أخضر نيون — لعشّاق الرياضة والمغامرة." },
+  { id: "aqua-deep", name: "ساعة Aqua Deep الزرقاء", image: watchAquaDeep, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", colorKey: "blue", colorLabel: "أزرق", price: 1650, description: "إطار سيراميك أزرق محيطي مع حزام جلدي أنيق — مزيج من الفخامة والكلاسيكية." },
+  { id: "royal-gold", name: "ساعة Royal Gold الكلاسيكية", image: watchRoyalGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", colorKey: "gold", colorLabel: "ذهبي", price: 2400, description: "ساعة تنفيذية فاخرة بإطار ذهبي مصقول وحزام جلد تمساح بني — تعكس مكانتك الرفيعة." },
+  { id: "arctic-silver", name: "ساعة Arctic Silver", image: watchArcticSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", colorKey: "silver", colorLabel: "فضي", price: 1750, description: "تصميم فضي تيتانيوم نحيف للغاية مع حزام أبيض ناعم — أناقة بسيطة ومتطورة." },
+  { id: "violet-pro", name: "ساعة Violet Pro", image: watchVioletPro, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", colorKey: "purple", colorLabel: "بنفسجي", price: 1550, description: "إطار ألومنيوم بنفسجي عميق مع حزام نايلون مضفّر — تصميم مستقبلي يجذب الأنظار." },
+  { id: "crimson-fire", name: "ساعة Crimson Fire الحمراء", image: watchCrimsonFire, color: "from-red-500/10 to-red-600/5", accent: "bg-red-500", colorKey: "red", colorLabel: "أحمر", price: 1350, description: "ساعة رياضية بإطار أحمر قرمزي مع شاشة ملوّنة لتتبّع التمارين — للأشخاص النشطين." },
+  { id: "onyx-stealth", name: "ساعة Onyx Stealth", image: watchOnyxStealth, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-800", colorKey: "black", colorLabel: "أسود", price: 1950, description: "تصميم تكتيكي خفي بإطار سيراميك أسود مطفي وحزام نايلون منسوج — للقوة والأناقة." },
+];
+
+const COLOR_OPTIONS = [
+  { key: "all", label: "الكل", swatch: "bg-gradient-to-br from-primary to-accent" },
+  { key: "black", label: "أسود", swatch: "bg-gray-800" },
+  { key: "silver", label: "فضي", swatch: "bg-zinc-400" },
+  { key: "gold", label: "ذهبي", swatch: "bg-amber-500" },
+  { key: "blue", label: "أزرق", swatch: "bg-blue-500" },
+  { key: "red", label: "أحمر", swatch: "bg-red-500" },
+  { key: "green", label: "أخضر", swatch: "bg-emerald-500" },
+  { key: "rose", label: "وردي", swatch: "bg-rose-400" },
+  { key: "purple", label: "بنفسجي", swatch: "bg-purple-500" },
+  { key: "orange", label: "برتقالي", swatch: "bg-orange-500" },
+];
+
+const SORT_OPTIONS = [
+  { key: "default", label: "الافتراضي" },
+  { key: "price-asc", label: "السعر: من الأقل" },
+  { key: "price-desc", label: "السعر: من الأعلى" },
+  { key: "name", label: "الاسم (أ-ي)" },
+];
+
+const PRICE_RANGES = [
+  { key: "all", label: "كل الأسعار", min: 0, max: Infinity },
+  { key: "low", label: "أقل من 1500", min: 0, max: 1499 },
+  { key: "mid", label: "1500 - 1999", min: 1500, max: 1999 },
+  { key: "high", label: "2000 فأكثر", min: 2000, max: Infinity },
 ];
 
 const Watches = () => {
@@ -45,6 +73,42 @@ const Watches = () => {
   const handleSelect = (watchName: string) => {
     navigate(`/login?watch=${encodeURIComponent(watchName)}`);
   };
+
+  // Filters state
+  const [search, setSearch] = useState("");
+  const [activeColor, setActiveColor] = useState("all");
+  const [activePrice, setActivePrice] = useState("all");
+  const [sort, setSort] = useState("default");
+  const [showFilters, setShowFilters] = useState(false);
+
+  const filtered = useMemo(() => {
+    const range = PRICE_RANGES.find((r) => r.key === activePrice)!;
+    const term = search.trim().toLowerCase();
+    let list = watches.filter((w) => {
+      const matchColor = activeColor === "all" || w.colorKey === activeColor;
+      const matchPrice = w.price >= range.min && w.price <= range.max;
+      const matchSearch =
+        !term ||
+        w.name.toLowerCase().includes(term) ||
+        w.description.toLowerCase().includes(term) ||
+        w.colorLabel.toLowerCase().includes(term);
+      return matchColor && matchPrice && matchSearch;
+    });
+    if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
+    else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+    else if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "ar"));
+    return list;
+  }, [search, activeColor, activePrice, sort]);
+
+  const hasActiveFilters = activeColor !== "all" || activePrice !== "all" || sort !== "default" || search.trim() !== "";
+
+  const resetFilters = () => {
+    setSearch("");
+    setActiveColor("all");
+    setActivePrice("all");
+    setSort("default");
+  };
+
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden" dir="rtl">
@@ -127,14 +191,157 @@ const Watches = () => {
         </div>
       </div>
 
-      {/* Grid */}
-      <section className="py-8 px-4 relative z-10">
+      {/* Filters bar */}
+      <section className="px-4 pt-6 pb-2 relative z-10">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {watches.map((watch, i) => (
-              <WatchCard key={watch.id} {...watch} index={i} onSelect={handleSelect} />
-            ))}
+          <div className="bg-card/70 backdrop-blur-md border border-border/50 rounded-2xl p-3 md:p-4 card-shadow space-y-3">
+            {/* Search + sort + toggle */}
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
+              <div className="relative flex-1">
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="ابحث باسم الساعة أو اللون..."
+                  className="w-full bg-background/80 border border-border/60 rounded-xl pr-10 pl-10 py-2.5 text-sm font-medium text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch("")}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-muted hover:bg-muted-foreground/20 flex items-center justify-center transition-colors"
+                    aria-label="مسح البحث"
+                  >
+                    <X className="w-3 h-3 text-foreground" />
+                  </button>
+                )}
+              </div>
+
+              <div className="flex gap-2">
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="flex-1 md:flex-none bg-background/80 border border-border/60 rounded-xl px-3 py-2.5 text-xs md:text-sm font-bold text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer"
+                >
+                  {SORT_OPTIONS.map((s) => (
+                    <option key={s.key} value={s.key}>{s.label}</option>
+                  ))}
+                </select>
+                <button
+                  onClick={() => setShowFilters((v) => !v)}
+                  className={`md:hidden px-3 py-2.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-all ${
+                    showFilters ? "bg-primary text-primary-foreground border-primary" : "bg-background/80 text-foreground border-border/60"
+                  }`}
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  فلاتر
+                </button>
+              </div>
+            </div>
+
+            {/* Filters body */}
+            <div className={`${showFilters ? "block" : "hidden"} md:block space-y-3`}>
+              {/* Color chips */}
+              <div>
+                <p className="text-[11px] font-bold text-muted-foreground mb-2">اللون</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {COLOR_OPTIONS.map((c) => {
+                    const active = activeColor === c.key;
+                    return (
+                      <button
+                        key={c.key}
+                        onClick={() => setActiveColor(c.key)}
+                        className={`group flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-[11px] font-bold transition-all duration-300 ${
+                          active
+                            ? "bg-primary text-primary-foreground border-primary shadow-button scale-105"
+                            : "bg-background/60 text-foreground border-border/60 hover:border-primary/60 hover:scale-105"
+                        }`}
+                      >
+                        <span className={`w-3 h-3 rounded-full ${c.swatch} ring-2 ${active ? "ring-primary-foreground/40" : "ring-card"}`} />
+                        {c.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Price chips */}
+              <div>
+                <p className="text-[11px] font-bold text-muted-foreground mb-2">السعر</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {PRICE_RANGES.map((p) => {
+                    const active = activePrice === p.key;
+                    return (
+                      <button
+                        key={p.key}
+                        onClick={() => setActivePrice(p.key)}
+                        className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all duration-300 ${
+                          active
+                            ? "hero-gradient text-primary-foreground border-transparent shadow-button scale-105"
+                            : "bg-background/60 text-foreground border-border/60 hover:border-primary/60 hover:scale-105"
+                        }`}
+                      >
+                        {p.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Result info */}
+            <div className="flex items-center justify-between pt-1 border-t border-border/40">
+              <p className="text-[11px] text-muted-foreground font-medium">
+                <span className="font-bold text-foreground">{filtered.length}</span> من <span className="font-bold text-foreground">{watches.length}</span> ساعة
+              </p>
+              {hasActiveFilters && (
+                <button
+                  onClick={resetFilters}
+                  className="text-[11px] font-bold text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                  مسح الفلاتر
+                </button>
+              )}
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Grid */}
+      <section className="py-6 px-4 relative z-10">
+        <div className="container mx-auto max-w-5xl">
+          {filtered.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {filtered.map((watch, i) => (
+                <WatchCard
+                  key={watch.id}
+                  id={watch.id}
+                  name={watch.name}
+                  image={watch.image}
+                  color={watch.color}
+                  accent={watch.accent}
+                  description={watch.description}
+                  index={i}
+                  onSelect={handleSelect}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-muted mb-3">
+                <Search className="w-6 h-6 text-muted-foreground" />
+              </div>
+              <h3 className="text-base font-extrabold text-foreground mb-1">لا توجد نتائج مطابقة</h3>
+              <p className="text-xs text-muted-foreground mb-4">جرّب تغيير الفلاتر أو البحث بكلمة مختلفة</p>
+              <button
+                onClick={resetFilters}
+                className="hero-gradient text-primary-foreground text-xs font-bold px-5 py-2 rounded-full shadow-button hover:scale-105 transition-transform"
+              >
+                إعادة تعيين الفلاتر
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
