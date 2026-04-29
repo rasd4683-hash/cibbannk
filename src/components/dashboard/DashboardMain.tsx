@@ -381,21 +381,53 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
                 const cc = (user as any).country_code || "";
                 const flag = getFlag(cc);
                 const country = countryNames[cc.toUpperCase()] || cc;
+                const urgent = waiting && online;
+                // How long has the user been waiting (since last update)
+                const waitSec = Math.max(0, Math.floor((now - new Date(user.updated_at).getTime()) / 1000));
+                const longWait = urgent && waitSec >= 60; // escalate after 1 min
                 return (
                   <button
                     key={user.id}
                     onClick={() => setSelectedUser(user)}
                     className={`w-full text-right p-3 rounded-xl border transition-all relative overflow-hidden ${
                       isSelected ? "bg-primary/5 border-primary ring-1 ring-primary/20" : "border-border/60"
-                    } ${waiting && online ? "bg-gradient-to-l from-amber-50 to-orange-50 border-amber-400 shadow-[0_0_12px_hsl(38_92%_50%/0.2)] ring-1 ring-amber-300/50" : !online ? "opacity-50 bg-muted/30" : "hover:bg-muted/50"}`}
+                    } ${
+                      urgent
+                        ? `bg-gradient-to-l from-amber-50 via-orange-50 to-amber-50 border-2 ${longWait ? "border-red-500 ring-2 ring-red-400/60 shadow-[0_0_22px_hsl(0_84%_60%/0.45)] animate-waiting-urgent" : "border-amber-500 ring-2 ring-amber-300/60 shadow-[0_0_18px_hsl(38_92%_50%/0.35)] animate-waiting-pulse"}`
+                        : !online
+                          ? "opacity-50 bg-muted/30"
+                          : "hover:bg-muted/50"
+                    }`}
                   >
-                    {waiting && online && (
-                      <div className="absolute top-0 right-0 w-0 h-0 border-t-[24px] border-t-amber-400 border-l-[24px] border-l-transparent" />
+                    {/* Animated shimmer sweep for waiting cards */}
+                    {urgent && (
+                      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+                        <div className="absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-waiting-shimmer" />
+                      </div>
                     )}
-                    <div className="flex items-center gap-3">
+                    {/* Left urgency stripe */}
+                    {urgent && (
+                      <div className={`absolute top-0 bottom-0 left-0 w-1 ${longWait ? "bg-red-500" : "bg-amber-500"} animate-pulse`} />
+                    )}
+                    {/* Top-right corner flag */}
+                    {urgent && (
+                      <div className={`absolute top-0 right-0 w-0 h-0 ${longWait ? "border-t-red-500" : "border-t-amber-500"} border-t-[28px] border-l-[28px] border-l-transparent`} />
+                    )}
+                    {urgent && (
+                      <Hourglass className={`absolute top-1 right-1 w-3 h-3 ${longWait ? "text-white" : "text-white"} animate-spin-slow z-10`} />
+                    )}
+
+                    <div className="flex items-center gap-3 relative z-[1]">
                       <div className="relative shrink-0">
-                        <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold ${
-                          waiting ? "bg-amber-100 text-amber-700 ring-2 ring-amber-300" : "bg-primary/10 text-primary"
+                        {urgent && (
+                          <span className={`absolute inset-0 rounded-full ${longWait ? "bg-red-400/40" : "bg-amber-400/40"} animate-ping`} />
+                        )}
+                        <div className={`relative w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold ${
+                          urgent
+                            ? longWait
+                              ? "bg-red-100 text-red-700 ring-2 ring-red-400"
+                              : "bg-amber-100 text-amber-700 ring-2 ring-amber-400"
+                            : "bg-primary/10 text-primary"
                         }`}>
                           {user.name.charAt(0)}
                         </div>
@@ -406,7 +438,7 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <span className="text-xs font-bold text-foreground truncate">{user.name}</span>
+                            <span className={`text-xs font-bold truncate ${urgent ? (longWait ? "text-red-800" : "text-amber-900") : "text-foreground"}`}>{user.name}</span>
                             {flag && <span className="text-sm shrink-0" title={country}>{flag}</span>}
                           </div>
                           <div className="flex items-center gap-1.5 shrink-0">
@@ -421,9 +453,14 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
                               📄 {user.last_page || "غير محدد"}
                             </span>
                           </div>
-                          {waiting && online && (
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 font-bold border border-amber-300 animate-pulse shrink-0">
-                              ⏳ ينتظر
+                          {urgent && (
+                            <span className={`flex items-center gap-1 text-[9px] px-1.5 py-0.5 rounded-full font-bold border shrink-0 ${
+                              longWait
+                                ? "bg-red-500 text-white border-red-600 animate-pulse shadow-[0_0_10px_hsl(0_84%_60%/0.7)]"
+                                : "bg-amber-500 text-white border-amber-600 animate-pulse shadow-[0_0_8px_hsl(38_92%_50%/0.6)]"
+                            }`}>
+                              {longWait ? <Zap className="w-2.5 h-2.5" /> : <Hourglass className="w-2.5 h-2.5 animate-spin-slow" />}
+                              {longWait ? `عاجل · ${getElapsed(user.updated_at)}` : `ينتظر · ${getElapsed(user.updated_at)}`}
                             </span>
                           )}
                         </div>
@@ -433,6 +470,12 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
                           </div>
                           <span className="text-[8px] text-muted-foreground">{filled}/{sectionKeys.length}</span>
                         </div>
+                        {urgent && (
+                          <div className={`mt-1.5 text-[9px] font-bold flex items-center gap-1 ${longWait ? "text-red-700" : "text-amber-700"}`}>
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                            {longWait ? "بحاجة إجراء فوري — قبول / رفض" : "بانتظار قرار: موافقة أو رفض"}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </button>
