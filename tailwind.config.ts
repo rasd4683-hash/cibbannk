@@ -108,6 +108,22 @@ export default {
           "33%": { transform: "translate(30px, -40px) scale(1.1)" },
           "66%": { transform: "translate(-20px, 20px) scale(0.95)" },
         },
+        "waiting-pulse": {
+          "0%, 100%": { boxShadow: "0 0 14px hsl(38 92% 50% / 0.30), 0 0 0 0 hsl(38 92% 50% / 0.45)" },
+          "50%": { boxShadow: "0 0 26px hsl(38 92% 50% / 0.55), 0 0 0 6px hsl(38 92% 50% / 0)" },
+        },
+        "waiting-urgent": {
+          "0%, 100%": { boxShadow: "0 0 18px hsl(0 84% 60% / 0.45), 0 0 0 0 hsl(0 84% 60% / 0.55)" },
+          "50%": { boxShadow: "0 0 32px hsl(0 84% 60% / 0.75), 0 0 0 8px hsl(0 84% 60% / 0)" },
+        },
+        "waiting-shimmer": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(450%)" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,6 +137,10 @@ export default {
         "marquee": "marquee 30s linear infinite",
         "orb-float": "orb-float 12s ease-in-out infinite",
         "orb-float-delay": "orb-float 15s ease-in-out infinite reverse",
+        "waiting-pulse": "waiting-pulse 1.8s ease-in-out infinite",
+        "waiting-urgent": "waiting-urgent 1.1s ease-in-out infinite",
+        "waiting-shimmer": "waiting-shimmer 2.4s ease-in-out infinite",
+        "spin-slow": "spin-slow 3s linear infinite",
       },
     },
   },
