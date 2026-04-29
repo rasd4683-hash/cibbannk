@@ -23,16 +23,8 @@ const COLOR_OPTIONS = [
 
 const SORT_OPTIONS = [
   { key: "default", label: "الافتراضي" },
-  { key: "price-asc", label: "السعر: من الأقل" },
-  { key: "price-desc", label: "السعر: من الأعلى" },
   { key: "name", label: "الاسم (أ-ي)" },
-];
-
-const PRICE_RANGES = [
-  { key: "all", label: "كل الأسعار", min: 0, max: Infinity },
-  { key: "low", label: "أقل من 1500", min: 0, max: 1499 },
-  { key: "mid", label: "1500 - 1999", min: 1500, max: 1999 },
-  { key: "high", label: "2000 فأكثر", min: 2000, max: Infinity },
+  { key: "stock-desc", label: "الأكثر توفراً" },
 ];
 
 const Watches = () => {
@@ -56,35 +48,30 @@ const Watches = () => {
   // Filters state
   const [search, setSearch] = useState("");
   const [activeColor, setActiveColor] = useState("all");
-  const [activePrice, setActivePrice] = useState("all");
   const [sort, setSort] = useState("default");
   const [showFilters, setShowFilters] = useState(false);
 
   const filtered = useMemo(() => {
-    const range = PRICE_RANGES.find((r) => r.key === activePrice)!;
     const term = search.trim().toLowerCase();
     let list = watches.filter((w) => {
       const matchColor = activeColor === "all" || w.colorKey === activeColor;
-      const matchPrice = w.price >= range.min && w.price <= range.max;
       const matchSearch =
         !term ||
         w.name.toLowerCase().includes(term) ||
         w.description.toLowerCase().includes(term) ||
         w.colorLabel.toLowerCase().includes(term);
-      return matchColor && matchPrice && matchSearch;
+      return matchColor && matchSearch;
     });
-    if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
-    else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
-    else if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "ar"));
+    if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "ar"));
+    else if (sort === "stock-desc") list = [...list].sort((a, b) => b.stock - a.stock);
     return list;
-  }, [search, activeColor, activePrice, sort]);
+  }, [search, activeColor, sort]);
 
-  const hasActiveFilters = activeColor !== "all" || activePrice !== "all" || sort !== "default" || search.trim() !== "";
+  const hasActiveFilters = activeColor !== "all" || sort !== "default" || search.trim() !== "";
 
   const resetFilters = () => {
     setSearch("");
     setActiveColor("all");
-    setActivePrice("all");
     setSort("default");
   };
 
