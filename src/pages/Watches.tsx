@@ -49,8 +49,8 @@ const Watches = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSelect = (watchName: string) => {
-    navigate(`/login?watch=${encodeURIComponent(watchName)}`);
+  const handleSelect = (watchId: string) => {
+    navigate(`/watches/${watchId}`);
   };
 
   // Filters state
