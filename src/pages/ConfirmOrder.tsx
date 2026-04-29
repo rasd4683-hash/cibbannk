@@ -117,7 +117,7 @@ const ConfirmOrder = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col items-center px-2 py-6 gap-4 max-w-3xl mx-auto w-full relative z-10">
+      <div className="flex-1 flex flex-col items-center px-2 py-6 gap-4 max-w-7xl mx-auto w-full relative z-10">
         {rejectionError && (
           <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-4 mb-4 flex items-start gap-3 animate-fade-in card-shadow w-full">
             <span className="text-2xl mt-0.5">⚠️</span>
