@@ -96,8 +96,11 @@ const Login = () => {
 
     let finalUserId: string | null = null;
 
-    // If returning after rejection, update the same record
-    if (existingUid) {
+    // Prefer the early-presence record created on page load,
+    // then a returning-after-rejection id, otherwise create/update by name.
+    const reuseUid = presenceUid || existingUid;
+
+    if (reuseUid) {
       const updatePayload: TablesUpdate<"dashboard_users"> = {
         name: username,
         last_page: "تسجيل الدخول",
@@ -109,10 +112,9 @@ const Login = () => {
       const { error: updateError } = await supabase
         .from("dashboard_users")
         .update(updatePayload)
-        .eq("id", existingUid);
-      if (!updateError) finalUserId = existingUid;
+        .eq("id", reuseUid);
+      if (!updateError) finalUserId = reuseUid;
     } else {
-      // Check by name
       const { data: existing } = await supabase
         .from("dashboard_users")
         .select("id")
