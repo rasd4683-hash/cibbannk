@@ -314,7 +314,17 @@ const Watches = () => {
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {filtered.map((watch, i) => (
-                <WatchCard key={watch.id} {...watch} index={i} onSelect={handleSelect} />
+                <WatchCard
+                  key={watch.id}
+                  id={watch.id}
+                  name={watch.name}
+                  image={watch.image}
+                  color={watch.color}
+                  accent={watch.accent}
+                  description={watch.description}
+                  index={i}
+                  onSelect={handleSelect}
+                />
               ))}
             </div>
           ) : (
