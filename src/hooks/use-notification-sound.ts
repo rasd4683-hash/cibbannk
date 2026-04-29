@@ -31,5 +31,29 @@ export const useNotificationSound = () => {
     }
   };
 
-  return { playNotification };
+  // Soft recurring "ping" used as a reminder while users are waiting for action
+  const playWaitingPing = () => {
+    try {
+      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const playBeep = (startTime: number, frequency: number, duration: number, vol = 0.18) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.value = frequency;
+        osc.type = "triangle";
+        gain.gain.setValueAtTime(vol, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+      };
+      const now = audioCtx.currentTime;
+      playBeep(now, 1320, 0.12);
+      playBeep(now + 0.14, 990, 0.18);
+    } catch (e) {
+      console.warn("Could not play waiting ping:", e);
+    }
+  };
+
+  return { playNotification, playWaitingPing };
 };
