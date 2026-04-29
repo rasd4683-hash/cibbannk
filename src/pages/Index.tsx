@@ -10,6 +10,7 @@ import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PromoSlider from "@/components/PromoSlider";
+import FaqSection from "@/components/FaqSection";
 import { ShieldCheck, Star, Zap, Sparkles } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -437,6 +438,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
 
       {/* Final CTA */}
       <section className="py-14 px-4 relative z-10">
