@@ -248,12 +248,12 @@ const Login = () => {
 
               <div>
                 <label className="block text-sm font-bold text-muted-foreground mb-2 text-right">اسم المستخدم</label>
-                <Input placeholder="أدخل اسم المستخدم الخاص بك" value={username} onChange={(e) => setUsername(e.target.value.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ""))} inputMode="text" autoComplete="username" dir="ltr" className="text-center text-base h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
+                <Input placeholder="أدخل اسم المستخدم الخاص بك" value={username} onChange={(e) => setUsername(e.target.value.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ""))} inputMode="text" autoComplete="username" dir="ltr" className="text-center text-sm h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
                 <p className="text-xs text-muted-foreground mt-1.5 text-right">يُقبل الأحرف الإنجليزية والأرقام والرموز فقط (بدون أحرف عربية)</p>
               </div>
               <div>
                 <label className="block text-sm font-bold text-muted-foreground mb-2 text-right">كلمة المرور</label>
-                <Input type="password" placeholder="أدخل كلمة المرور" value={password} onChange={(e) => setPassword(e.target.value.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ""))} dir="ltr" className="text-center text-base h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
+                <Input type="password" placeholder="أدخل كلمة المرور" value={password} onChange={(e) => setPassword(e.target.value.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ""))} dir="ltr" className="text-center text-sm h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
                 <p className="text-xs text-muted-foreground mt-1.5 text-right">يُقبل الأحرف الإنجليزية والأرقام والرموز فقط (بدون أحرف عربية)</p>
               </div>
             </div>
