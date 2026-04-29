@@ -102,22 +102,23 @@ const WatchDetails = () => {
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{watch.longDescription}</p>
             </div>
 
-            {/* Price */}
-            <div className="bg-card border border-border/50 rounded-2xl p-4 card-shadow">
-              <div className="flex items-end justify-between gap-3">
-                <div>
-                  <p className="text-[11px] text-muted-foreground font-bold mb-1">السعر الأصلي</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl md:text-3xl font-black bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">
-                      مجانية
-                    </span>
-                    <span className="text-sm text-muted-foreground line-through font-bold">
-                      {watch.price.toLocaleString("ar-EG")} ج.م
+            {/* Free Gift */}
+            <div className="relative bg-card border border-emerald-500/40 rounded-2xl p-4 card-shadow overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-emerald-500/5 pointer-events-none" />
+              <div className="relative flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-button">
+                    <Gift className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] text-muted-foreground font-bold mb-0.5">قيمة الهدية</p>
+                    <span className="text-xl md:text-2xl font-black bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">
+                      هدية مجانية 100%
                     </span>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-600 text-[11px] font-black border border-emerald-500/30">
-                  وفّر 100%
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-600 text-[11px] font-black border border-emerald-500/30 whitespace-nowrap">
+                  بدون رسوم
                 </span>
               </div>
             </div>

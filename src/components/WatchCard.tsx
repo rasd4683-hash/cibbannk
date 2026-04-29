@@ -1,4 +1,4 @@
-import { ChevronLeft, ArrowUpLeft } from "lucide-react";
+import { ChevronLeft, Gift } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface WatchCardProps {
@@ -28,6 +28,12 @@ const WatchCard = ({ id, name, image, color, accent, description, index, onSelec
     >
       {/* Color accent */}
       <div className={`absolute top-3 right-3 w-3.5 h-3.5 rounded-full ${accent} z-10 ring-2 ring-card shadow-md`} />
+
+      {/* Free badge */}
+      <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-[9px] md:text-[10px] font-black shadow-md ring-1 ring-white/30">
+        <Gift className="w-2.5 h-2.5" />
+        مجانية
+      </div>
 
       {/* Hover glow */}
       <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
@@ -59,10 +65,6 @@ const WatchCard = ({ id, name, image, color, accent, description, index, onSelec
         </div>
       </div>
 
-      {/* Corner arrow */}
-      <div className="absolute top-3 left-3 w-7 h-7 rounded-full glass-card flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-        <ArrowUpLeft className="w-3 h-3 text-primary" />
-      </div>
     </div>
   );
 };
