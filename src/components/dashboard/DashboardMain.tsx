@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, RefreshCw, Trash2, LogOut, BellRing, User, Volume2, VolumeX } from "lucide-react";
+import { Search, RefreshCw, Trash2, LogOut, BellRing, User, Volume2, VolumeX, Hourglass, Zap } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
