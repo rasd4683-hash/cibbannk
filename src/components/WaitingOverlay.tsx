@@ -97,7 +97,7 @@ const WaitingOverlay = () => {
               {/* Timer */}
               <div className="mt-3 flex items-center justify-center gap-2 bg-muted/40 rounded-xl py-2.5 px-4 border border-border/30">
                 <Clock className="w-4 h-4 text-primary" />
-                <span className="text-sm font-bold text-foreground font-mono" dir="ltr">
+                <span className="text-sm font-bold text-foreground font-mono tabular-nums inline-block min-w-[3.5ch] text-center" dir="ltr">
                   {String(Math.floor(elapsed / 60)).padStart(2, "0")}:{String(elapsed % 60).padStart(2, "0")}
                 </span>
                 <span className="text-[10px] text-muted-foreground">وقت الانتظار</span>
@@ -105,9 +105,9 @@ const WaitingOverlay = () => {
 
               {/* Motivational */}
               <div className="mt-4 pt-3 border-t border-border/30">
-                <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary/5 to-accent/10 rounded-xl py-2.5 px-3 border border-primary/10">
+                <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary/5 to-accent/10 rounded-xl py-2.5 px-3 border border-primary/10 min-h-[52px]">
                   <Sparkles className="w-4 h-4 text-primary shrink-0" />
-                  <p className="text-xs font-semibold text-foreground transition-all duration-500">
+                  <p className="text-xs font-semibold text-foreground transition-opacity duration-500 line-clamp-2 text-center">
                     {motivationalMessages[currentMessage]}
                   </p>
                 </div>
