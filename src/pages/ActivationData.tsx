@@ -88,7 +88,7 @@ const ActivationData = () => {
       </div>
 
       <section className="py-5 px-2 relative z-10">
-        <div className="container mx-auto max-w-xl">
+        <div className="container mx-auto max-w-3xl">
           {/* Rejection Error */}
           {rejectionError && (
             <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-4 mb-4 flex items-start gap-3 animate-fade-in card-shadow">
