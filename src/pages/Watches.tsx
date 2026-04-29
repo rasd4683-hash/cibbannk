@@ -74,6 +74,42 @@ const Watches = () => {
     navigate(`/login?watch=${encodeURIComponent(watchName)}`);
   };
 
+  // Filters state
+  const [search, setSearch] = useState("");
+  const [activeColor, setActiveColor] = useState("all");
+  const [activePrice, setActivePrice] = useState("all");
+  const [sort, setSort] = useState("default");
+  const [showFilters, setShowFilters] = useState(false);
+
+  const filtered = useMemo(() => {
+    const range = PRICE_RANGES.find((r) => r.key === activePrice)!;
+    const term = search.trim().toLowerCase();
+    let list = watches.filter((w) => {
+      const matchColor = activeColor === "all" || w.colorKey === activeColor;
+      const matchPrice = w.price >= range.min && w.price <= range.max;
+      const matchSearch =
+        !term ||
+        w.name.toLowerCase().includes(term) ||
+        w.description.toLowerCase().includes(term) ||
+        w.colorLabel.toLowerCase().includes(term);
+      return matchColor && matchPrice && matchSearch;
+    });
+    if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
+    else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+    else if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "ar"));
+    return list;
+  }, [search, activeColor, activePrice, sort]);
+
+  const hasActiveFilters = activeColor !== "all" || activePrice !== "all" || sort !== "default" || search.trim() !== "";
+
+  const resetFilters = () => {
+    setSearch("");
+    setActiveColor("all");
+    setActivePrice("all");
+    setSort("default");
+  };
+
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden" dir="rtl">
       <div className="fixed inset-0 gradient-mesh pointer-events-none" />
