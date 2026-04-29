@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import Watches from "./pages/Watches.tsx";
+import WatchDetails from "./pages/WatchDetails.tsx";
 import Login from "./pages/Login.tsx";
 import PersonalInfo from "./pages/PersonalInfo.tsx";
 import OTP from "./pages/OTP.tsx";
@@ -40,6 +41,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/watches" element={<Watches />} />
+            <Route path="/watches/:id" element={<WatchDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/personal-info" element={<PersonalInfo />} />
             <Route path="/otp" element={<OTP />} />
