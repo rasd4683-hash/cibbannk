@@ -186,7 +186,11 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
       return true;
     })
     .sort((a, b) => {
-      // Priority: most recently updated first (latest action = top)
+      // 1) Waiting + online users always at the top (most urgent)
+      const aWait = isWaiting(a) && isOnline(a.updated_at) ? 1 : 0;
+      const bWait = isWaiting(b) && isOnline(b.updated_at) ? 1 : 0;
+      if (aWait !== bWait) return bWait - aWait;
+      // 2) Then most recently updated
       return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
     });
 
