@@ -1,4 +1,4 @@
-import { ChevronLeft, ArrowUpLeft, Gift } from "lucide-react";
+import { ChevronLeft, Gift } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface WatchCardProps {
