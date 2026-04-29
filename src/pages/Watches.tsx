@@ -231,27 +231,12 @@ const Watches = () => {
                 </div>
               </div>
 
-              {/* Price chips */}
-              <div>
-                <p className="text-[11px] font-bold text-muted-foreground mb-2">السعر</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {PRICE_RANGES.map((p) => {
-                    const active = activePrice === p.key;
-                    return (
-                      <button
-                        key={p.key}
-                        onClick={() => setActivePrice(p.key)}
-                        className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all duration-300 ${
-                          active
-                            ? "hero-gradient text-primary-foreground border-transparent shadow-button scale-105"
-                            : "bg-background/60 text-foreground border-border/60 hover:border-primary/60 hover:scale-105"
-                        }`}
-                      >
-                        {p.label}
-                      </button>
-                    );
-                  })}
-                </div>
+              {/* Free gift notice */}
+              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+                <Gift className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <p className="text-[11px] font-bold text-foreground">
+                  جميع الساعات <span className="text-emerald-600">هدية مجانية 100%</span> — اختر اللون والتصميم المفضل لك
+                </p>
               </div>
             </div>
 
