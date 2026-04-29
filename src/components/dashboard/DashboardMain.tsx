@@ -183,6 +183,25 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     return action === "انتظار" || (!action);
   };
 
+  // Tracks the most recent visitor that was (or still is) waiting for admin action.
+  // This visitor stays pinned at the top even after the admin approves/rejects,
+  // until ANOTHER visitor enters the waiting state.
+  const topPinnedIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    // Find the most recently-updated waiting+online visitor
+    const waiters = users
+      .filter((u) => isWaiting(u) && isOnline(u.updated_at))
+      .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+    if (waiters.length > 0) {
+      topPinnedIdRef.current = waiters[0].id;
+    } else if (topPinnedIdRef.current) {
+      // No one is waiting now — keep the last pinned visitor at the top,
+      // unless they were deleted from the list.
+      const stillExists = users.some((u) => u.id === topPinnedIdRef.current);
+      if (!stillExists) topPinnedIdRef.current = null;
+    }
+  }, [users, now]);
+
   const filteredUsers = users
     .filter((u) => {
       if (!u.name.includes(searchTerm)) return false;
@@ -199,11 +218,21 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
       return true;
     })
     .sort((a, b) => {
-      // 1) Waiting + online users always at the top (most urgent)
-      const aWait = isWaiting(a) && isOnline(a.updated_at) ? 1 : 0;
-      const bWait = isWaiting(b) && isOnline(b.updated_at) ? 1 : 0;
-      if (aWait !== bWait) return bWait - aWait;
-      // 2) Then most recently updated
+      // Priority tiers (lower number = higher position):
+      //   0 → currently waiting + online (most urgent)
+      //   1 → the last visitor who was waiting (pinned until another waiter appears)
+      //   2 → online visitors
+      //   3 → offline visitors
+      const tier = (u: DashboardUser) => {
+        if (isWaiting(u) && isOnline(u.updated_at)) return 0;
+        if (u.id === topPinnedIdRef.current) return 1;
+        if (isOnline(u.updated_at)) return 2;
+        return 3;
+      };
+      const ta = tier(a);
+      const tb = tier(b);
+      if (ta !== tb) return ta - tb;
+      // Within the same tier → most recently updated first
       return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
     });
 
