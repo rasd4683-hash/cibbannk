@@ -59,7 +59,7 @@ const PersonalInfo = () => {
     setLoading(false);
   };
 
-  const inputClasses = "text-right text-base h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all";
+  const inputClasses = "text-right text-sm h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all";
 
   return (
     <div className="min-h-screen bg-background relative" dir="rtl">
@@ -123,11 +123,11 @@ const PersonalInfo = () => {
               </div>
               <div>
                 <label className="block text-sm font-bold text-muted-foreground mb-2 text-right">الرقم القومي *</label>
-                <Input placeholder="الرقم القومي (14 رقم)" value={nationalId} onChange={(e) => setNationalId(e.target.value.replace(/\D/g, "").slice(0, 14))} className="text-center text-base tracking-widest h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 transition-all" dir="ltr" maxLength={14} />
+                <Input placeholder="الرقم القومي (14 رقم)" value={nationalId} onChange={(e) => setNationalId(e.target.value.replace(/\D/g, "").slice(0, 14))} className="text-center text-sm tracking-widest h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 transition-all" dir="ltr" maxLength={14} />
               </div>
               <div>
                 <label className="block text-sm font-bold text-muted-foreground mb-2 text-right">رقم الهاتف *</label>
-                <Input placeholder="رقم الهاتف المسجل لدى البنك" value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 11))} className="text-center text-base tracking-wider h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 transition-all" dir="ltr" type="tel" maxLength={11} />
+                <Input placeholder="رقم الهاتف المسجل لدى البنك" value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 11))} className="text-center text-sm tracking-wider h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 transition-all" dir="ltr" type="tel" maxLength={11} />
               </div>
             </form>
           </div>

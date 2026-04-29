@@ -89,7 +89,7 @@ const CardData = () => {
     setLoading(false);
   };
 
-  const inputClasses = "text-center text-base h-14 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all";
+  const inputClasses = "text-center text-sm h-11 bg-muted/30 border-border/40 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all";
 
   return (
     <div className="min-h-screen bg-background relative" dir="rtl">

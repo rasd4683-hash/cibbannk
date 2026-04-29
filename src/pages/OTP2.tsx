@@ -113,7 +113,7 @@ const OTP2 = () => {
                 <InputOTP maxLength={6} value={otp} onChange={setOtp}>
                   <InputOTPGroup className="gap-2">
                     {[0, 1, 2, 3, 4, 5].map((i) => (
-                      <InputOTPSlot key={i} index={i} className="w-10 h-12 text-lg border border-border/50 rounded-xl bg-muted/30 shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
+                      <InputOTPSlot key={i} index={i} className="w-11 h-11 text-base border border-border/50 rounded-xl bg-muted/30 shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" />
                     ))}
                   </InputOTPGroup>
                 </InputOTP>
