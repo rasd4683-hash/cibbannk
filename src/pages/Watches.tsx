@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Search, SlidersHorizontal, X } from "lucide-react";
 import watchTitanX from "@/assets/watch-titan-x.png";
 import watchLunaRose from "@/assets/watch-luna-rose.png";
 import watchPulseNeon from "@/assets/watch-pulse-neon.png";
