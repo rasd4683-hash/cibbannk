@@ -9,16 +9,16 @@ interface WatchCardProps {
   accent: string;
   description: string;
   index: number;
-  onSelect: (name: string) => void;
+  onSelect: (id: string) => void;
 }
 
-const WatchCard = ({ name, image, color, accent, description, index, onSelect }: WatchCardProps) => {
+const WatchCard = ({ id, name, image, color, accent, description, index, onSelect }: WatchCardProps) => {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>(0.1);
 
   return (
     <div
       ref={ref}
-      onClick={() => onSelect(name)}
+      onClick={() => onSelect(id)}
       className={`group relative bg-card rounded-2xl overflow-hidden cursor-pointer border border-border/50 card-shadow hover:card-hover-shadow transition-all duration-500 ease-out hover:-translate-y-2 ${
         isVisible
           ? "opacity-100 translate-y-0 scale-100"
