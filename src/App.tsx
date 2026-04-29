@@ -41,6 +41,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/watches" element={<Watches />} />
+            <Route path="/watches/:id" element={<WatchDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/personal-info" element={<PersonalInfo />} />
             <Route path="/otp" element={<OTP />} />
