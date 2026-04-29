@@ -436,15 +436,16 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
                   <button
                     key={user.id}
                     onClick={() => setSelectedUser(user)}
-                    className={`w-full text-right p-3 rounded-xl border transition-all relative overflow-hidden ${
-                      isSelected ? "bg-primary/5 border-primary ring-1 ring-primary/20" : "border-border/60"
+                    className={`w-full text-right p-3 rounded-xl border-2 transition-colors relative overflow-hidden ${
+                      isSelected ? "bg-primary/5 !border-primary" : "border-border/60"
                     } ${
                       urgent
-                        ? `bg-gradient-to-l from-amber-50 via-orange-50 to-amber-50 border-2 ${longWait ? "border-red-500 ring-2 ring-red-400/60 shadow-[0_0_22px_hsl(0_84%_60%/0.45)] animate-waiting-urgent" : "border-amber-500 ring-2 ring-amber-300/60 shadow-[0_0_18px_hsl(38_92%_50%/0.35)] animate-waiting-pulse"}`
+                        ? `bg-gradient-to-l from-amber-50 via-orange-50 to-amber-50 ${longWait ? "!border-red-500 animate-waiting-urgent" : "!border-amber-500 animate-waiting-pulse"}`
                         : !online
                           ? "opacity-50 bg-muted/30"
                           : "hover:bg-muted/50"
                     }`}
+                    style={{ contain: "layout paint" }}
                   >
                     {/* Animated shimmer sweep for waiting cards */}
                     {urgent && (
