@@ -145,9 +145,14 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
             toast({ title: notifyTitle, description: notifyDesc });
           }
         }
-        fetchUsers();
       })
-      .subscribe();
+      .subscribe((status) => {
+        console.log("[Realtime] dashboard_users channel status:", status);
+        if (status === "CHANNEL_ERROR" || status === "TIMED_OUT" || status === "CLOSED") {
+          // Reconcile state from server when realtime drops
+          fetchUsers();
+        }
+      });
 
     return () => { supabase.removeChannel(channel); };
   }, []);
