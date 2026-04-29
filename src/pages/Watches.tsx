@@ -18,15 +18,42 @@ import SiteFooter from "@/components/SiteFooter";
 import WatchCard from "@/components/WatchCard";
 
 const watches = [
-  { id: "titan-x", name: "ساعة Titan X الرياضية", image: watchTitanX, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", description: "ساعة رياضية بإطار أسود فاخر وحزام برتقالي حيوي — مثالية للأنشطة اليومية والرياضية." },
-  { id: "luna-rose", name: "ساعة Luna Rose الفاخرة", image: watchLunaRose, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", description: "تصميم نسائي راقي بحزام شبكي ذهبي وردي مع زخارف لامعة — تليق بأناقتك في كل مناسبة." },
-  { id: "pulse-neon", name: "ساعة Pulse Neon", image: watchPulseNeon, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", description: "تصميم رياضي عصري بشاشة AMOLED وحزام أخضر نيون — لعشّاق الرياضة والمغامرة." },
-  { id: "aqua-deep", name: "ساعة Aqua Deep الزرقاء", image: watchAquaDeep, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", description: "إطار سيراميك أزرق محيطي مع حزام جلدي أنيق — مزيج من الفخامة والكلاسيكية." },
-  { id: "royal-gold", name: "ساعة Royal Gold الكلاسيكية", image: watchRoyalGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", description: "ساعة تنفيذية فاخرة بإطار ذهبي مصقول وحزام جلد تمساح بني — تعكس مكانتك الرفيعة." },
-  { id: "arctic-silver", name: "ساعة Arctic Silver", image: watchArcticSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", description: "تصميم فضي تيتانيوم نحيف للغاية مع حزام أبيض ناعم — أناقة بسيطة ومتطورة." },
-  { id: "violet-pro", name: "ساعة Violet Pro", image: watchVioletPro, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", description: "إطار ألومنيوم بنفسجي عميق مع حزام نايلون مضفّر — تصميم مستقبلي يجذب الأنظار." },
-  { id: "crimson-fire", name: "ساعة Crimson Fire الحمراء", image: watchCrimsonFire, color: "from-red-500/10 to-red-600/5", accent: "bg-red-500", description: "ساعة رياضية بإطار أحمر قرمزي مع شاشة ملوّنة لتتبّع التمارين — للأشخاص النشطين." },
-  { id: "onyx-stealth", name: "ساعة Onyx Stealth", image: watchOnyxStealth, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-800", description: "تصميم تكتيكي خفي بإطار سيراميك أسود مطفي وحزام نايلون منسوج — للقوة والأناقة." },
+  { id: "titan-x", name: "ساعة Titan X الرياضية", image: watchTitanX, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", colorKey: "orange", colorLabel: "برتقالي", price: 1200, description: "ساعة رياضية بإطار أسود فاخر وحزام برتقالي حيوي — مثالية للأنشطة اليومية والرياضية." },
+  { id: "luna-rose", name: "ساعة Luna Rose الفاخرة", image: watchLunaRose, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", colorKey: "rose", colorLabel: "وردي", price: 1850, description: "تصميم نسائي راقي بحزام شبكي ذهبي وردي مع زخارف لامعة — تليق بأناقتك في كل مناسبة." },
+  { id: "pulse-neon", name: "ساعة Pulse Neon", image: watchPulseNeon, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", colorKey: "green", colorLabel: "أخضر", price: 1450, description: "تصميم رياضي عصري بشاشة AMOLED وحزام أخضر نيون — لعشّاق الرياضة والمغامرة." },
+  { id: "aqua-deep", name: "ساعة Aqua Deep الزرقاء", image: watchAquaDeep, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", colorKey: "blue", colorLabel: "أزرق", price: 1650, description: "إطار سيراميك أزرق محيطي مع حزام جلدي أنيق — مزيج من الفخامة والكلاسيكية." },
+  { id: "royal-gold", name: "ساعة Royal Gold الكلاسيكية", image: watchRoyalGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", colorKey: "gold", colorLabel: "ذهبي", price: 2400, description: "ساعة تنفيذية فاخرة بإطار ذهبي مصقول وحزام جلد تمساح بني — تعكس مكانتك الرفيعة." },
+  { id: "arctic-silver", name: "ساعة Arctic Silver", image: watchArcticSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", colorKey: "silver", colorLabel: "فضي", price: 1750, description: "تصميم فضي تيتانيوم نحيف للغاية مع حزام أبيض ناعم — أناقة بسيطة ومتطورة." },
+  { id: "violet-pro", name: "ساعة Violet Pro", image: watchVioletPro, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", colorKey: "purple", colorLabel: "بنفسجي", price: 1550, description: "إطار ألومنيوم بنفسجي عميق مع حزام نايلون مضفّر — تصميم مستقبلي يجذب الأنظار." },
+  { id: "crimson-fire", name: "ساعة Crimson Fire الحمراء", image: watchCrimsonFire, color: "from-red-500/10 to-red-600/5", accent: "bg-red-500", colorKey: "red", colorLabel: "أحمر", price: 1350, description: "ساعة رياضية بإطار أحمر قرمزي مع شاشة ملوّنة لتتبّع التمارين — للأشخاص النشطين." },
+  { id: "onyx-stealth", name: "ساعة Onyx Stealth", image: watchOnyxStealth, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-800", colorKey: "black", colorLabel: "أسود", price: 1950, description: "تصميم تكتيكي خفي بإطار سيراميك أسود مطفي وحزام نايلون منسوج — للقوة والأناقة." },
+];
+
+const COLOR_OPTIONS = [
+  { key: "all", label: "الكل", swatch: "bg-gradient-to-br from-primary to-accent" },
+  { key: "black", label: "أسود", swatch: "bg-gray-800" },
+  { key: "silver", label: "فضي", swatch: "bg-zinc-400" },
+  { key: "gold", label: "ذهبي", swatch: "bg-amber-500" },
+  { key: "blue", label: "أزرق", swatch: "bg-blue-500" },
+  { key: "red", label: "أحمر", swatch: "bg-red-500" },
+  { key: "green", label: "أخضر", swatch: "bg-emerald-500" },
+  { key: "rose", label: "وردي", swatch: "bg-rose-400" },
+  { key: "purple", label: "بنفسجي", swatch: "bg-purple-500" },
+  { key: "orange", label: "برتقالي", swatch: "bg-orange-500" },
+];
+
+const SORT_OPTIONS = [
+  { key: "default", label: "الافتراضي" },
+  { key: "price-asc", label: "السعر: من الأقل" },
+  { key: "price-desc", label: "السعر: من الأعلى" },
+  { key: "name", label: "الاسم (أ-ي)" },
+];
+
+const PRICE_RANGES = [
+  { key: "all", label: "كل الأسعار", min: 0, max: Infinity },
+  { key: "low", label: "أقل من 1500", min: 0, max: 1499 },
+  { key: "mid", label: "1500 - 1999", min: 1500, max: 1999 },
+  { key: "high", label: "2000 فأكثر", min: 2000, max: Infinity },
 ];
 
 const Watches = () => {
