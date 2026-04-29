@@ -29,7 +29,7 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     return saved !== "off";
   });
   const { toast } = useToast();
-  const { playNotification } = useNotificationSound();
+  const { playNotification, playWaitingPing } = useNotificationSound();
   const isInitialLoad = useRef(true);
   const soundEnabledRef = useRef(soundEnabled);
 
