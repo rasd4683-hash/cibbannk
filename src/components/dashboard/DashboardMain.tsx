@@ -144,6 +144,19 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     return () => clearInterval(timer);
   }, []);
 
+  // Recurring soft reminder ping while there are waiting+online users (every 20s)
+  useEffect(() => {
+    const hasWaiting = users.some((u) => isWaiting(u) && isOnline(u.updated_at));
+    if (!hasWaiting) return;
+    const interval = setInterval(() => {
+      if (soundEnabledRef.current) {
+        playWaitingPing();
+        navigator.vibrate?.(80);
+      }
+    }, 20000);
+    return () => clearInterval(interval);
+  }, [users, now, playWaitingPing]);
+
   useEffect(() => {
     if (!selectedUser) return;
     const latestSelectedUser = users.find((u) => u.id === selectedUser.id);
