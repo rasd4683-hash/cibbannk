@@ -6,11 +6,13 @@ import { supabase } from "@/integrations/supabase/client";
 import successBanner from "@/assets/success-banner.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { useAdminRedirect } from "@/hooks/use-admin-redirect";
 
 const Success = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const userId = searchParams.get("uid") || "";
+  useAdminRedirect(userId || null);
 
   useEffect(() => {
     if (!userId) return;
