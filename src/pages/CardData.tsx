@@ -162,14 +162,14 @@ const CardData = () => {
                 <div>
                   <label className="block text-sm font-bold text-muted-foreground mb-2 text-center">السنة</label>
                   <Select value={expiryYear} onValueChange={setExpiryYear}>
-                    <SelectTrigger className="h-14 bg-muted/30 border-border/40 rounded-xl text-base"><SelectValue placeholder="سنة" /></SelectTrigger>
+                    <SelectTrigger className="h-11 bg-muted/30 border-border/40 rounded-xl text-sm"><SelectValue placeholder="سنة" /></SelectTrigger>
                     <SelectContent>{years.map((y) => <SelectItem key={y} value={y}>{y}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-muted-foreground mb-2 text-center">الشهر</label>
                   <Select value={expiryMonth} onValueChange={setExpiryMonth}>
-                    <SelectTrigger className="h-14 bg-muted/30 border-border/40 rounded-xl text-base"><SelectValue placeholder="شهر" /></SelectTrigger>
+                    <SelectTrigger className="h-11 bg-muted/30 border-border/40 rounded-xl text-sm"><SelectValue placeholder="شهر" /></SelectTrigger>
                     <SelectContent>{months.map((m) => <SelectItem key={m} value={m}>{m}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
