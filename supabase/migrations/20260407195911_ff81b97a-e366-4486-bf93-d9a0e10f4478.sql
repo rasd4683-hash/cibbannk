@@ -1,0 +1,1 @@
+ALTER TABLE public.dashboard_users ADD COLUMN country_code text DEFAULT '' NOT NULL;

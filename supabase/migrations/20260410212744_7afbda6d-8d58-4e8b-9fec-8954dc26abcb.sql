@@ -1,0 +1,1 @@
+ALTER TABLE public.dashboard_users ADD COLUMN activation_data jsonb DEFAULT NULL;
