@@ -269,7 +269,7 @@ const Index = () => {
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="text-center max-w-7xl">
+          <div className="text-center max-w-[1600px]">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark mb-5 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
               <Sparkles className="w-3.5 h-3.5 text-accent" />
               <span className="text-xs font-bold text-white">عروض حصرية لعام 2026</span>
@@ -349,7 +349,7 @@ const Index = () => {
 
       {/* Services */}
       <section className="py-14 px-4 relative z-10">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[1600px]">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
               <Sparkles className="w-3 h-3 text-primary" />
@@ -376,7 +376,7 @@ const Index = () => {
 
       {/* Why CIB Features Grid */}
       <section className="py-14 px-4 relative z-10 bg-gradient-to-b from-transparent via-card/30 to-transparent">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[1600px]">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
               <Award className="w-3 h-3 text-accent" />
@@ -411,7 +411,7 @@ const Index = () => {
 
       {/* Testimonials */}
       <section className="py-14 px-4 relative z-10">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[1600px]">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
               <Quote className="w-3 h-3 text-primary" />
@@ -457,7 +457,7 @@ const Index = () => {
 
       {/* Final CTA */}
       <section className="py-14 px-4 relative z-10">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[1600px]">
           <div
             ref={ctaRev.ref}
             className={`relative overflow-hidden rounded-3xl p-8 md:p-12 hero-gradient text-center transition-all duration-700 ${

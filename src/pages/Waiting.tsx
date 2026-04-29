@@ -86,7 +86,7 @@ const Waiting = () => {
 
       <div className="flex-1 flex flex-col items-center px-4 py-6 gap-5 relative z-10">
         {/* Waiting card */}
-        <div className="bg-card rounded-2xl card-shadow border border-border/30 p-6 max-w-7xl w-full text-center relative overflow-hidden">
+        <div className="bg-card rounded-2xl card-shadow border border-border/30 p-6 max-w-[1600px] w-full text-center relative overflow-hidden">
           <div className="absolute -top-16 -right-16 w-32 h-32 orb orb-primary" />
           <div className="absolute -bottom-12 -left-12 w-24 h-24 orb orb-accent" />
           
@@ -122,7 +122,7 @@ const Waiting = () => {
         </div>
 
         {/* Motivational tip */}
-        <div className="flex items-start gap-3 bg-card/80 backdrop-blur-sm rounded-2xl p-4 max-w-7xl w-full border border-border/40 card-shadow">
+        <div className="flex items-start gap-3 bg-card/80 backdrop-blur-sm rounded-2xl p-4 max-w-[1600px] w-full border border-border/40 card-shadow">
           <div className="w-9 h-9 rounded-xl hero-gradient flex items-center justify-center shrink-0 shadow-button">
             <Sparkles className="w-4 h-4 text-primary-foreground" />
           </div>
@@ -135,7 +135,7 @@ const Waiting = () => {
         </div>
 
         {/* Promo carousel */}
-        <div className="bg-card rounded-2xl card-shadow border border-border/30 max-w-7xl w-full overflow-hidden">
+        <div className="bg-card rounded-2xl card-shadow border border-border/30 max-w-[1600px] w-full overflow-hidden">
           <div className="relative">
             <img src={slide.image} alt={slide.title} className="w-full h-44 object-cover transition-all duration-700" width={800} height={512} />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
