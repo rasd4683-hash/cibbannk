@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import watchGreen from "@/assets/watch-green.png";
-import watchWhite from "@/assets/watch-white.png";
-import watchPurple from "@/assets/watch-purple.png";
-import watchOrange from "@/assets/watch-orange.png";
-import watchBlack from "@/assets/watch-black.png";
-import watchRosegold from "@/assets/watch-rosegold.png";
-import watchBlue from "@/assets/watch-blue.png";
-import watchSilver from "@/assets/watch-silver.png";
-import watchGold from "@/assets/watch-gold.png";
+import watchTitanX from "@/assets/watch-titan-x.png";
+import watchLunaRose from "@/assets/watch-luna-rose.png";
+import watchPulseNeon from "@/assets/watch-pulse-neon.png";
+import watchAquaDeep from "@/assets/watch-aqua-deep.png";
+import watchRoyalGold from "@/assets/watch-royal-gold.png";
+import watchArcticSilver from "@/assets/watch-arctic-silver.png";
+import watchVioletPro from "@/assets/watch-violet-pro.png";
+import watchCrimsonFire from "@/assets/watch-crimson-fire.png";
+import watchOnyxStealth from "@/assets/watch-onyx-stealth.png";
 import watchesBanner from "@/assets/watches-banner.jpg";
 import { ShieldCheck, Gift, Sparkles } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -17,15 +17,15 @@ import SiteFooter from "@/components/SiteFooter";
 import WatchCard from "@/components/WatchCard";
 
 const watches = [
-  { id: "green", name: "ساعة اورورا اخضر", image: watchGreen, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", description: "تصميم ناعم بلون هادئ يعكس الأناقة والبساطة — مثالية للإطلالات اليومية والعملية." },
-  { id: "white", name: "ساعة اورورا ابيض", image: watchWhite, color: "from-slate-200/30 to-slate-300/10", accent: "bg-slate-400", description: "تصميم أنيق وفخيم بلون أبيض نقي — تضفي لمسة عصرية مميزة على مظهرك." },
-  { id: "purple", name: "ساعة اورورا البنفسجي", image: watchPurple, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", description: "ألوان لافتة وعصرية تجعلك محط الأنظار — مثالية لمن يبحث عن التميّز." },
-  { id: "orange", name: "ساعة اورورا البرتقالي", image: watchOrange, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", description: "لون دافئ وجذّاب يعكس الحيوية — اختيارك الأمثل لإطلالة مشرقة ومليئة بالطاقة." },
-  { id: "black", name: "ساعة اورورا اسود", image: watchBlack, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-700", description: "أناقة كلاسيكية بلمسة فاخرة — تجمع بين الفخامة والأداء في تصميم عصري." },
-  { id: "rosegold", name: "ساعة اورورا المريخي", image: watchRosegold, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", description: "لون دافئ وناعم يعكس الرقي والأناقة — اختيارك المثالي لكل مناسبة." },
-  { id: "blue", name: "ساعة اورورا الأزرق", image: watchBlue, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", description: "لون أزرق كلاسيكي يجمع بين الأناقة والثقة — مثالية لكل الأوقات." },
-  { id: "silver", name: "ساعة اورورا الفضي", image: watchSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", description: "تصميم فضي لامع يعكس الفخامة العصرية — اختيارك الأمثل للمناسبات الراقية." },
-  { id: "gold", name: "ساعة اورورا الذهبي", image: watchGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", description: "لمسة ذهبية فاخرة تعكس الرقي والتميّز — ساعة تليق بذوقك الرفيع." },
+  { id: "titan-x", name: "ساعة Titan X الرياضية", image: watchTitanX, color: "from-orange-500/10 to-orange-600/5", accent: "bg-orange-500", description: "ساعة رياضية بإطار أسود فاخر وحزام برتقالي حيوي — مثالية للأنشطة اليومية والرياضية." },
+  { id: "luna-rose", name: "ساعة Luna Rose الفاخرة", image: watchLunaRose, color: "from-rose-400/10 to-rose-500/5", accent: "bg-rose-400", description: "تصميم نسائي راقي بحزام شبكي ذهبي وردي مع زخارف لامعة — تليق بأناقتك في كل مناسبة." },
+  { id: "pulse-neon", name: "ساعة Pulse Neon", image: watchPulseNeon, color: "from-emerald-500/10 to-emerald-600/5", accent: "bg-emerald-500", description: "تصميم رياضي عصري بشاشة AMOLED وحزام أخضر نيون — لعشّاق الرياضة والمغامرة." },
+  { id: "aqua-deep", name: "ساعة Aqua Deep الزرقاء", image: watchAquaDeep, color: "from-blue-500/10 to-blue-600/5", accent: "bg-blue-500", description: "إطار سيراميك أزرق محيطي مع حزام جلدي أنيق — مزيج من الفخامة والكلاسيكية." },
+  { id: "royal-gold", name: "ساعة Royal Gold الكلاسيكية", image: watchRoyalGold, color: "from-amber-400/10 to-amber-500/5", accent: "bg-amber-500", description: "ساعة تنفيذية فاخرة بإطار ذهبي مصقول وحزام جلد تمساح بني — تعكس مكانتك الرفيعة." },
+  { id: "arctic-silver", name: "ساعة Arctic Silver", image: watchArcticSilver, color: "from-zinc-300/10 to-zinc-400/5", accent: "bg-zinc-400", description: "تصميم فضي تيتانيوم نحيف للغاية مع حزام أبيض ناعم — أناقة بسيطة ومتطورة." },
+  { id: "violet-pro", name: "ساعة Violet Pro", image: watchVioletPro, color: "from-purple-500/10 to-purple-600/5", accent: "bg-purple-500", description: "إطار ألومنيوم بنفسجي عميق مع حزام نايلون مضفّر — تصميم مستقبلي يجذب الأنظار." },
+  { id: "crimson-fire", name: "ساعة Crimson Fire الحمراء", image: watchCrimsonFire, color: "from-red-500/10 to-red-600/5", accent: "bg-red-500", description: "ساعة رياضية بإطار أحمر قرمزي مع شاشة ملوّنة لتتبّع التمارين — للأشخاص النشطين." },
+  { id: "onyx-stealth", name: "ساعة Onyx Stealth", image: watchOnyxStealth, color: "from-gray-700/10 to-gray-800/5", accent: "bg-gray-800", description: "تصميم تكتيكي خفي بإطار سيراميك أسود مطفي وحزام نايلون منسوج — للقوة والأناقة." },
 ];
 
 const Watches = () => {
