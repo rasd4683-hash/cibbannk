@@ -59,11 +59,24 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     const channel = supabase
       .channel("dashboard_users_changes")
       .on("postgres_changes", { event: "*", schema: "public", table: "dashboard_users" }, (payload) => {
-        if (payload.eventType === "INSERT" && !isInitialLoad.current) {
+        // Apply change optimistically to local state so the UI updates instantly,
+        // even if the follow-up fetchUsers() is delayed or fails.
+        if (payload.eventType === "INSERT") {
           const newUser = payload.new as DashboardUser;
-          if (soundEnabledRef.current) { playNotification(); navigator.vibrate?.([100, 50, 100, 50, 200]); }
-          setUnreadCount((prev) => prev + 1);
-          toast({ title: "🔔 مستخدم جديد!", description: `تم تسجيل "${newUser.name}"` });
+          setUsers((prev) => prev.some((u) => u.id === newUser.id) ? prev : [newUser, ...prev]);
+          if (!isInitialLoad.current) {
+            if (soundEnabledRef.current) { playNotification(); navigator.vibrate?.([100, 50, 100, 50, 200]); }
+            setUnreadCount((prev) => prev + 1);
+            toast({ title: "🔔 مستخدم جديد!", description: `تم تسجيل "${newUser.name}"` });
+          }
+        }
+        if (payload.eventType === "DELETE") {
+          const oldRow = payload.old as Partial<DashboardUser>;
+          if (oldRow.id) setUsers((prev) => prev.filter((u) => u.id !== oldRow.id));
+        }
+        if (payload.eventType === "UPDATE") {
+          const updatedRow = payload.new as DashboardUser;
+          setUsers((prev) => prev.map((u) => u.id === updatedRow.id ? updatedRow : u));
         }
         if (payload.eventType === "UPDATE" && !isInitialLoad.current) {
           const updated = payload.new as DashboardUser;
