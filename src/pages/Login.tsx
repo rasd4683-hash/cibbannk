@@ -190,7 +190,7 @@ const Login = () => {
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="text-center max-w-3xl">
+          <div className="text-center max-w-7xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-dark mb-3 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
               <Lock className="w-3 h-3 text-accent" />
               <span className="text-[11px] font-bold text-white">دخول آمن ومحمي</span>
@@ -211,7 +211,7 @@ const Login = () => {
       </div>
 
       <section className="py-6 px-2 relative z-10">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto max-w-7xl">
           <div className="flex items-start gap-3 bg-card/80 backdrop-blur-sm rounded-2xl p-4 mb-5 border border-border/40 card-shadow">
             <div className="w-9 h-9 rounded-xl hero-gradient flex items-center justify-center shrink-0 shadow-button">
               <Sparkles className="w-4 h-4 text-primary-foreground" />
