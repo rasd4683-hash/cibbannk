@@ -67,9 +67,31 @@
     @apply border-border;
   }
 
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html {
+    /* Reserve space for scrollbar to prevent layout shift when content changes */
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-background text-foreground font-cairo antialiased;
     direction: rtl;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Disable heavy effects on mobile to prevent jitter */
+  @media (max-width: 767px) {
+    .orb {
+      animation: none !important;
+      filter: blur(40px);
+    }
   }
 }
 
