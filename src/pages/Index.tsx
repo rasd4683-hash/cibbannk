@@ -77,13 +77,26 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
+    // Disable parallax on mobile to prevent jitter/layout shifts
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches) {
+      return;
+    }
+    let rafId = 0;
     const handleScroll = () => {
-      if (!imgRef.current) return;
-      const scrollY = window.scrollY;
-      imgRef.current.style.transform = `translateY(${scrollY * 0.35}px) scale(${1 + scrollY * 0.0003})`;
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        if (imgRef.current) {
+          const scrollY = window.scrollY;
+          imgRef.current.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
+        }
+        rafId = 0;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

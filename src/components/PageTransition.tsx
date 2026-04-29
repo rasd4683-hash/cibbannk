@@ -180,12 +180,8 @@ const PageTransition = ({ children }: { children: ReactNode }) => {
       )}
 
       <div
-        className={`transition-all duration-500 ease-out ${
-          stage === "entering"
-            ? "opacity-100 translate-y-0 scale-100"
-            : stage === "loading"
-            ? "opacity-0 scale-[0.98] blur-sm"
-            : "opacity-100 translate-y-0 scale-100"
+        className={`transition-opacity duration-300 ease-out ${
+          stage === "loading" ? "opacity-0" : "opacity-100"
         }`}
       >
         {displayChildren}
