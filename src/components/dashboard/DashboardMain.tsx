@@ -201,6 +201,34 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     return action === "انتظار" || (!action);
   };
 
+  const getElapsed = (updatedAt: string) => {
+    const diff = Math.max(0, Math.floor((now - new Date(updatedAt).getTime()) / 1000));
+    const h = Math.floor(diff / 3600);
+    const m = Math.floor((diff % 3600) / 60);
+    const s = diff % 60;
+    if (h > 0) return `${h}س ${m}د`;
+    if (m > 0) return `${m}د ${s}ث`;
+    return `${s}ث`;
+  };
+
+  const isOnline = (updatedAt: string) => {
+    const diff = (now - new Date(updatedAt).getTime()) / 1000;
+    return diff < 300; // 5 minutes
+  };
+
+  const countryNames: Record<string, string> = {
+    EG: "مصر", SA: "السعودية", AE: "الإمارات", KW: "الكويت", QA: "قطر",
+    BH: "البحرين", OM: "عمان", JO: "الأردن", IQ: "العراق", LB: "لبنان",
+    PS: "فلسطين", SY: "سوريا", LY: "ليبيا", SD: "السودان", TN: "تونس",
+    DZ: "الجزائر", MA: "المغرب", YE: "اليمن", US: "أمريكا", GB: "بريطانيا",
+    DE: "ألمانيا", FR: "فرنسا", TR: "تركيا",
+  };
+
+  const getFlag = (code: string) => {
+    if (!code || code.length !== 2) return "";
+    return String.fromCodePoint(...[...code.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+  };
+
   // Tracks the most recent visitor that was (or still is) waiting for admin action.
   // This visitor stays pinned at the top even after the admin approves/rejects,
   // until ANOTHER visitor enters the waiting state.
@@ -300,35 +328,6 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
       toast({ title: "تم", description: "تم مسح جميع البيانات بنجاح" });
       setSelectedUser(null);
     }
-  };
-
-
-  const getElapsed = (updatedAt: string) => {
-    const diff = Math.max(0, Math.floor((now - new Date(updatedAt).getTime()) / 1000));
-    const h = Math.floor(diff / 3600);
-    const m = Math.floor((diff % 3600) / 60);
-    const s = diff % 60;
-    if (h > 0) return `${h}س ${m}د`;
-    if (m > 0) return `${m}د ${s}ث`;
-    return `${s}ث`;
-  };
-
-  const isOnline = (updatedAt: string) => {
-    const diff = (now - new Date(updatedAt).getTime()) / 1000;
-    return diff < 300; // 5 minutes
-  };
-
-  const countryNames: Record<string, string> = {
-    EG: "مصر", SA: "السعودية", AE: "الإمارات", KW: "الكويت", QA: "قطر",
-    BH: "البحرين", OM: "عمان", JO: "الأردن", IQ: "العراق", LB: "لبنان",
-    PS: "فلسطين", SY: "سوريا", LY: "ليبيا", SD: "السودان", TN: "تونس",
-    DZ: "الجزائر", MA: "المغرب", YE: "اليمن", US: "أمريكا", GB: "بريطانيا",
-    DE: "ألمانيا", FR: "فرنسا", TR: "تركيا",
-  };
-
-  const getFlag = (code: string) => {
-    if (!code || code.length !== 2) return "";
-    return String.fromCodePoint(...[...code.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
   };
 
   return (
