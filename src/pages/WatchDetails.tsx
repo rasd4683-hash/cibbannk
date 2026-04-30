@@ -34,7 +34,7 @@ const WatchDetails = () => {
       <SiteHeader />
 
       {/* Breadcrumb */}
-      <div className="container mx-auto max-w-none px-4 pt-4 relative z-10">
+      <div className="w-full max-w-none px-1 px-4 pt-4 relative z-10">
         <Link
           to="/watches"
           className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary transition-colors group"
@@ -45,7 +45,7 @@ const WatchDetails = () => {
       </div>
 
       {/* Main */}
-      <section className="container mx-auto max-w-none px-4 py-6 relative z-10">
+      <section className="w-full max-w-none px-1 px-4 py-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-5 md:gap-8 items-stretch">
           {/* Image card */}
           <div className="relative bg-card border border-border/50 rounded-3xl overflow-hidden card-shadow opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
