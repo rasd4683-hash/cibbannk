@@ -210,8 +210,8 @@ const Login = () => {
         `}</style>
       </div>
 
-      <section className="py-6 px-0 relative z-10">
-        <div className="w-full max-w-none px-1">
+      <section className="py-6 px-2 relative z-10">
+        <div className="w-full max-w-none px-3">
           <div className="flex items-start gap-3 bg-card/80 backdrop-blur-sm rounded-2xl p-4 mb-5 border border-border/40 card-shadow">
             <div className="w-9 h-9 rounded-xl hero-gradient flex items-center justify-center shrink-0 shadow-button">
               <Sparkles className="w-4 h-4 text-primary-foreground" />

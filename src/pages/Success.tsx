@@ -35,7 +35,7 @@ const Success = () => {
       </div>
 
       <section className="py-8 px-4 relative z-10">
-        <div className="w-full max-w-none px-1">
+        <div className="w-full max-w-none px-3">
           <div className="bg-card rounded-2xl p-8 card-shadow border border-border/30 text-center relative overflow-hidden">
             {/* Decorative orbs */}
             <div className="absolute -top-10 -right-10 w-32 h-32 orb orb-primary" />
