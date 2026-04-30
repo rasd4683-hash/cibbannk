@@ -159,7 +159,7 @@ const Watches = () => {
 
       {/* Filters bar */}
       <section className="px-4 pt-6 pb-2 relative z-10">
-        <div className="container mx-auto max-w-none">
+        <div className="w-full max-w-none px-1">
           <div className="bg-card/70 backdrop-blur-md border border-border/50 rounded-2xl p-3 md:p-4 card-shadow space-y-3">
             {/* Search + sort + toggle */}
             <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
@@ -261,7 +261,7 @@ const Watches = () => {
 
       {/* Grid */}
       <section className="py-6 px-4 relative z-10">
-        <div className="container mx-auto max-w-none">
+        <div className="w-full max-w-none px-1">
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {filtered.map((watch, i) => (
