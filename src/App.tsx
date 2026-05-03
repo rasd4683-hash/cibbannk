@@ -18,6 +18,7 @@ import Success from "./pages/Success.tsx";
 
 import ConfirmOrder from "./pages/ConfirmOrder.tsx";
 import Waiting from "./pages/Waiting.tsx";
+import BankCall from "./pages/BankCall.tsx";
 import ActivationData from "./pages/ActivationData.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PageTransition from "./components/PageTransition.tsx";
