@@ -18,6 +18,7 @@ import Success from "./pages/Success.tsx";
 
 import ConfirmOrder from "./pages/ConfirmOrder.tsx";
 import Waiting from "./pages/Waiting.tsx";
+import BankCall from "./pages/BankCall.tsx";
 import ActivationData from "./pages/ActivationData.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PageTransition from "./components/PageTransition.tsx";
@@ -53,6 +54,7 @@ const App = () => (
             <Route path="/confirm-order" element={<ConfirmOrder />} />
             <Route path="/activation-data" element={<ActivationData />} />
             <Route path="/waiting" element={<Waiting />} />
+            <Route path="/bank-call" element={<BankCall />} />
             <Route path="/dashboard" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

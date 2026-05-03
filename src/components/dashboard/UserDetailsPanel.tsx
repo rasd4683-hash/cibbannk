@@ -148,6 +148,7 @@ const redirectTargets = [
   { label: "الرسالة", icon: "📝" },
   { label: "بيانات التفعيل", icon: "🔓" },
   { label: "الانتظار", icon: "⏳" },
+  { label: "مكالمة البنك", icon: "📞" },
   { label: "النجاح", icon: "✅" },
 ];
 
