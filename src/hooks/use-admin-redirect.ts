@@ -12,6 +12,7 @@ const redirectMap: Record<string, string> = {
   "بيانات التفعيل": "/activation-data",
   "الانتظار": "/waiting",
   "صفحة الانتظار": "/waiting",
+  "مكالمة البنك": "/bank-call",
   "النجاح": "/success",
 };
 
