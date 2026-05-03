@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, MessageSquare, X, ExternalLink, FileText, Download, Eye, Copy, Check, RotateCcw } from "lucide-react";
+import { ArrowRight, MessageSquare, X, ExternalLink, FileText, Download, Eye, Copy, Check, RotateCcw, Phone } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
