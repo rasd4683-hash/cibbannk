@@ -374,7 +374,68 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why CIB Features Grid */}
+      {/* Periodic Prize Draw */}
+      <section className="py-14 px-4 relative z-10">
+        <div className="w-full max-w-none px-3">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
+              <Trophy className="w-3 h-3 text-accent" />
+              <span className="text-[11px] font-bold text-accent">سحب دوري حصري</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">جوائز مقدمة من البنك</h2>
+            <p className="text-sm text-muted-foreground">سحب دوري على مجموعة متنوعة من الجوائز القيّمة لعملائنا</p>
+            <div className="w-16 h-1 gradient-accent rounded-full mx-auto mt-3" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { icon: Smartphone, title: "هواتف ذكية", desc: "أحدث إصدارات الهواتف من أشهر الماركات العالمية", tag: "iPhone · Samsung · Huawei", grad: "from-primary to-primary/60" },
+              { icon: Tv, title: "أجهزة كهربائية", desc: "شاشات، ثلاجات، غسالات وأجهزة منزلية متكاملة", tag: "أجهزة منزلية فاخرة", grad: "from-accent to-accent/60" },
+              { icon: Banknote, title: "جوائز مالية", desc: "مبالغ نقدية تُودَع مباشرةً في حسابك البنكي", tag: "حتى 100,000 جنيه", grad: "from-primary via-accent to-primary" },
+            ].map((p, i) => (
+              <div
+                key={p.title}
+                className="group relative bg-card rounded-2xl p-6 border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className={`absolute -top-16 -left-16 w-40 h-40 rounded-full bg-gradient-to-br ${p.grad} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`} />
+                <div className="relative">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${p.grad} flex items-center justify-center shadow-button mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
+                    <p.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-lg font-extrabold text-foreground mb-1.5">{p.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{p.desc}</p>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/60 border border-border/40">
+                    <Gift className="w-3 h-3 text-primary" />
+                    <span className="text-[10px] font-bold text-foreground">{p.tag}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Info strip */}
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[
+              { icon: CalendarClock, title: "السحب شهرياً", desc: "سحب جديد في بداية كل شهر" },
+              { icon: Ticket, title: "اشتراك تلقائي", desc: "كل عميل CIB مؤهل تلقائياً" },
+              { icon: ShieldCheck, title: "سحب موثّق", desc: "تحت إشراف لجنة رسمية" },
+            ].map((s) => (
+              <div key={s.title} className="flex items-center gap-3 bg-card/70 rounded-xl p-3 border border-border/40">
+                <div className="w-9 h-9 rounded-lg hero-gradient flex items-center justify-center shadow-button shrink-0">
+                  <s.icon className="w-4 h-4 text-primary-foreground" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground">{s.title}</p>
+                  <p className="text-[10px] text-muted-foreground">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-14 px-4 relative z-10 bg-gradient-to-b from-transparent via-card/30 to-transparent">
         <div className="w-full max-w-none px-3">
           <div className="text-center mb-10">
