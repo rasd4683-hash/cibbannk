@@ -60,7 +60,7 @@ const PrizeDetails = () => {
             </div>
           </div>
 
-          {/* Prizes Grid */}
+          <AllDrawsNotice />
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Gift className="w-5 h-5 text-accent" />
