@@ -49,6 +49,16 @@ const PrizeDetails = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">{cat.description}</p>
           </div>
 
+          {/* Free banner */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-emerald-500/15 border-2 border-emerald-500/40 p-4 text-center">
+            <div className="flex items-center justify-center gap-2">
+              <Gift className="w-5 h-5 text-emerald-600" />
+              <p className="text-sm md:text-base font-black text-emerald-700">
+                جميع الجوائز مجانية بالكامل — تُسلَّم للفائز دون أي رسوم
+              </p>
+            </div>
+          </div>
+
           {/* Prizes Grid */}
           <div>
             <div className="flex items-center gap-2 mb-4">
