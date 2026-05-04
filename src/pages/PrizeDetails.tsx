@@ -85,7 +85,9 @@ const PrizeDetails = () => {
                   <div className="p-4">
                     <h3 className="text-base font-extrabold text-foreground mb-2">{prize.name}</h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-black text-primary">{prize.value}</span>
+                      <span className="inline-flex items-center gap-1 text-[10px] font-black text-emerald-600 bg-emerald-500/10 border border-emerald-500/30 px-2 py-1 rounded-full">
+                        🎁 مجاناً 100%
+                      </span>
                       <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
                         التفاصيل
                         <ChevronLeft className="w-3.5 h-3.5" />
