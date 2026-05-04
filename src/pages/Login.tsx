@@ -238,6 +238,10 @@ const Login = () => {
             </div>
           )}
 
+          <div className="mb-4">
+            <AllDrawsNotice variant="compact" />
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="bg-card rounded-2xl p-5 card-shadow border border-border/30 space-y-4">
               <div className="flex items-center gap-2.5 pb-3 border-b border-border/30">
