@@ -364,6 +364,33 @@ const Index = () => {
       {/* Promo Slider */}
       <PromoSlider />
 
+      {/* Free Gifts from the Bank */}
+      <section className="py-14 px-4 relative z-10">
+        <div className="w-full max-w-none px-3">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
+              <Gift className="w-3 h-3 text-accent" />
+              <span className="text-[11px] font-bold text-accent">هدايا مجانية من البنك</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">احصل على هديتك المجانية</h2>
+            <p className="text-sm text-muted-foreground">هدايا حصرية مقدمة من البنك التجاري الدولي لعملائه المميزين</p>
+            <div className="w-16 h-1 gradient-accent rounded-full mx-auto mt-3" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {freeGifts.map((gift, i) => (
+              <ServiceCard
+                key={gift.title}
+                image={gift.image}
+                title={gift.title}
+                description={gift.description}
+                delay={200 + i * 150}
+                to={gift.to}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-14 px-4 relative z-10">
         <div className="w-full max-w-none px-3">
