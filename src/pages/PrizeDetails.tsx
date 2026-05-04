@@ -1,104 +1,15 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { Smartphone, Tv, Banknote, Gift, CalendarClock, Ticket, ShieldCheck, CheckCircle2, ArrowRight, Sparkles, Trophy } from "lucide-react";
+import { Gift, CalendarClock, Ticket, ShieldCheck, ArrowRight, Sparkles, Trophy, ChevronLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-
-type PrizeKey = "phones" | "appliances" | "cash";
-
-const PRIZES: Record<PrizeKey, {
-  icon: any;
-  title: string;
-  tagline: string;
-  description: string;
-  items: string[];
-  eligibility: string[];
-  howToWin: string[];
-  grad: string;
-}> = {
-  phones: {
-    icon: Smartphone,
-    title: "هواتف ذكية",
-    tagline: "أحدث الهواتف من أشهر الماركات العالمية",
-    description:
-      "اربح أحدث إصدارات الهواتف الذكية من ماركات عالمية رائدة، تُسلَّم لك أصلية بضمان الوكيل الرسمي ومجاناً بالكامل.",
-    items: [
-      "iPhone 15 Pro Max",
-      "Samsung Galaxy S24 Ultra",
-      "Huawei Mate 60 Pro",
-      "Google Pixel 8 Pro",
-    ],
-    eligibility: [
-      "أن تكون عميلاً لدى البنك التجاري الدولي CIB",
-      "تفعيل البطاقة البنكية بنجاح",
-      "اكتمال بياناتك الشخصية في الحساب",
-    ],
-    howToWin: [
-      "يتم اشتراكك تلقائياً في السحب الشهري عند تفعيل البطاقة",
-      "يُجرى السحب في بداية كل شهر تحت إشراف لجنة رسمية",
-      "يتم التواصل مع الفائز عبر الهاتف المسجّل في البنك",
-      "تسليم الجائزة خلال 7 أيام عمل من تاريخ الإعلان",
-    ],
-    grad: "from-primary to-primary/60",
-  },
-  appliances: {
-    icon: Tv,
-    title: "أجهزة كهربائية",
-    tagline: "أجهزة منزلية متكاملة لراحة عائلتك",
-    description:
-      "مجموعة واسعة من الأجهزة الكهربائية والمنزلية الفاخرة من علامات تجارية موثوقة، تُسلَّم إلى عنوانك مجاناً.",
-    items: [
-      "شاشات سمارت 65 بوصة",
-      "ثلاجات نوفروست",
-      "غسالات أوتوماتيكية",
-      "مكيفات هواء سبليت",
-      "أجهزة مطبخ متكاملة",
-    ],
-    eligibility: [
-      "أن تكون عميلاً لدى البنك التجاري الدولي CIB",
-      "تفعيل البطاقة البنكية بنجاح",
-      "استخدام البطاقة في معاملة واحدة على الأقل",
-    ],
-    howToWin: [
-      "اشتراك تلقائي في السحب الدوري لكل عميل مؤهل",
-      "السحب يُجرى كل شهرين تحت إشراف لجنة رسمية",
-      "الإعلان عن الفائزين عبر القنوات الرسمية للبنك",
-      "توصيل مجاني للجائزة حتى باب المنزل",
-    ],
-    grad: "from-accent to-accent/60",
-  },
-  cash: {
-    icon: Banknote,
-    title: "جوائز مالية",
-    tagline: "مبالغ نقدية تُودَع مباشرةً في حسابك",
-    description:
-      "اربح مبالغ نقدية قيّمة تُحوّل مباشرة إلى حسابك البنكي خلال ساعات من إعلان النتائج، دون أي رسوم أو خصومات.",
-    items: [
-      "الجائزة الكبرى: 100,000 جنيه",
-      "الجائزة الثانية: 50,000 جنيه",
-      "الجائزة الثالثة: 25,000 جنيه",
-      "10 جوائز تشجيعية بقيمة 5,000 جنيه",
-    ],
-    eligibility: [
-      "أن تكون عميلاً نشطاً لدى البنك التجاري الدولي CIB",
-      "تفعيل البطاقة البنكية بنجاح",
-      "الحفاظ على حساب نشط دون إيقاف",
-    ],
-    howToWin: [
-      "كل عميل CIB مؤهل تلقائياً عند تفعيل بطاقته",
-      "سحب شهري على الجوائز المالية",
-      "إيداع المبلغ مباشرة في حسابك البنكي خلال 24 ساعة",
-      "إشعار فوري عبر الرسائل النصية والبريد الإلكتروني",
-    ],
-    grad: "from-primary via-accent to-primary",
-  },
-};
+import { PRIZE_CATEGORIES, type CategoryKey } from "@/data/prizes";
 
 const PrizeDetails = () => {
-  const { category } = useParams<{ category: PrizeKey }>();
-  if (!category || !(category in PRIZES)) return <Navigate to="/" replace />;
+  const { category } = useParams<{ category: CategoryKey }>();
+  if (!category || !(category in PRIZE_CATEGORIES)) return <Navigate to="/" replace />;
 
-  const prize = PRIZES[category];
-  const Icon = prize.icon;
+  const cat = PRIZE_CATEGORIES[category];
+  const Icon = cat.icon;
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -109,7 +20,7 @@ const PrizeDetails = () => {
       <SiteHeader />
 
       {/* Hero */}
-      <section className={`relative overflow-hidden bg-gradient-to-br ${prize.grad} py-14 px-4`}>
+      <section className={`relative overflow-hidden bg-gradient-to-br ${cat.grad} py-14 px-4`}>
         <div className="absolute inset-0 pattern-grid opacity-15" />
         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-white/20 blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-accent/30 blur-3xl" />
@@ -122,35 +33,60 @@ const PrizeDetails = () => {
           <div className="w-20 h-20 rounded-3xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 shadow-button">
             <Icon className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-white mb-2 drop-shadow-lg">{prize.title}</h1>
-          <p className="text-sm md:text-base text-white/90">{prize.tagline}</p>
+          <h1 className="text-3xl md:text-4xl font-black text-white mb-2 drop-shadow-lg">{cat.title}</h1>
+          <p className="text-sm md:text-base text-white/90">{cat.tagline}</p>
         </div>
       </section>
 
       <section className="py-12 px-4 relative z-10">
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="max-w-5xl mx-auto space-y-8">
           {/* Description */}
           <div className="bg-card rounded-2xl p-6 border border-border/40 card-shadow">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-primary" />
-              <h2 className="text-lg font-extrabold text-foreground">عن الجائزة</h2>
+              <h2 className="text-lg font-extrabold text-foreground">عن هذه الفئة</h2>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{prize.description}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{cat.description}</p>
           </div>
 
-          {/* Items */}
-          <div className="bg-card rounded-2xl p-6 border border-border/40 card-shadow">
+          {/* Prizes Grid */}
+          <div>
             <div className="flex items-center gap-2 mb-4">
-              <Gift className="w-4 h-4 text-accent" />
-              <h2 className="text-lg font-extrabold text-foreground">قائمة الجوائز المتاحة</h2>
+              <Gift className="w-5 h-5 text-accent" />
+              <h2 className="text-xl font-extrabold text-foreground">الجوائز المتاحة في السحب</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {prize.items.map((item) => (
-                <div key={item} className="flex items-center gap-2 bg-muted/40 rounded-xl p-3 border border-border/30">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-foreground">{item}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {cat.prizes.map((prize) => {
+                const PIcon = prize.icon;
+                return (
+                  <Link
+                    key={prize.id}
+                    to={`/prizes/${cat.key}/${prize.id}`}
+                    className="group relative bg-card rounded-2xl p-5 border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden block"
+                  >
+                    <div className={`absolute -top-12 -left-12 w-32 h-32 rounded-full bg-gradient-to-br ${cat.grad} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`} />
+                    <div className="relative">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.grad} flex items-center justify-center shadow-button group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
+                          <PIcon className="w-6 h-6 text-primary-foreground" />
+                        </div>
+                        <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-accent/15 text-accent border border-accent/20">
+                          {prize.quantity} فائز
+                        </span>
+                      </div>
+                      <h3 className="text-base font-extrabold text-foreground mb-1">{prize.name}</h3>
+                      <p className="text-[11px] text-muted-foreground mb-3">{prize.shortDesc}</p>
+                      <div className="flex items-center justify-between pt-3 border-t border-border/30">
+                        <span className="text-xs font-black text-primary">{prize.value}</span>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
+                          التفاصيل
+                          <ChevronLeft className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
@@ -161,7 +97,7 @@ const PrizeDetails = () => {
               <h2 className="text-lg font-extrabold text-foreground">شروط الاستحقاق</h2>
             </div>
             <ul className="space-y-2.5">
-              {prize.eligibility.map((c, i) => (
+              {cat.eligibility.map((c, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-lg hero-gradient flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-[11px] font-bold text-primary-foreground">{i + 1}</span>
@@ -179,7 +115,7 @@ const PrizeDetails = () => {
               <h2 className="text-lg font-extrabold text-foreground">آلية السحب والفوز</h2>
             </div>
             <ol className="relative border-r-2 border-border/40 pr-5 space-y-4">
-              {prize.howToWin.map((step, i) => (
+              {cat.howToWin.map((step, i) => (
                 <li key={i} className="relative">
                   <div className="absolute -right-[27px] top-0 w-5 h-5 rounded-full hero-gradient flex items-center justify-center text-[10px] font-bold text-primary-foreground">
                     {i + 1}
