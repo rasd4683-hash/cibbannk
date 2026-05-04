@@ -63,18 +63,18 @@ const features = [
 ];
 
 const testimonials = [
-  { name: "أحمد محمود", role: "عميل CIB Premium", text: "تجربة مصرفية لا مثيل لها — الخدمة سريعة والموظفون محترفون جداً.", rating: 5 },
-  { name: "سارة عبدالله", role: "عميلة CIB Plus", text: "حصلت على ساعتي الذكية مجاناً خلال أيام قليلة — شكراً CIB!", rating: 5 },
-  { name: "محمد علي", role: "رجل أعمال", text: "أفضل بنك تعاملت معه — التطبيق الإلكتروني سهل وآمن جداً.", rating: 5 },
+  { name: "أحمد محمود", role: "عميل CIB Premium", text: "حصلت على ساعتي الذكية مجاناً وفُزت لاحقاً بهاتف iPhone في السحب الشهري — تجربة لا تُنسى!", rating: 5 },
+  { name: "سارة عبدالله", role: "عميلة CIB Plus", text: "تفعيل البطاقة كان سريعاً وسلساً، والمفاجأة كانت الفوز بمبلغ مالي في حسابي بعد أسبوعين.", rating: 5 },
+  { name: "محمد علي", role: "رجل أعمال", text: "أفضل بنك تعاملت معه — هدايا مجانية وسحوبات حقيقية وخدمة عملاء راقية.", rating: 5 },
 ];
 
 const marqueeItems = [
-  "🎁 عروض حصرية لعملاء CIB",
-  "⚡ تفعيل فوري للبطاقات",
-  "🏆 جوائز شهرية كبرى",
-  "🔒 أمان مصرفي عالي",
-  "📱 تطبيق ذكي متكامل",
-  "🌟 خدمة عملاء 24/7",
+  "🎁 ساعة ذكية مجاناً عند التفعيل",
+  "💳 تفعيل البطاقة بدون رسوم",
+  "📱 سحب شهري على هواتف ذكية",
+  "🏠 سحب على أجهزة كهربائية فاخرة",
+  "💰 جوائز مالية حتى 100,000 جنيه",
+  "🔒 أمان مصرفي بمعايير عالمية",
 ];
 
 const Index = () => {
@@ -289,25 +289,26 @@ const Index = () => {
           <div className="text-center max-w-none">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark mb-5 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
               <Sparkles className="w-3.5 h-3.5 text-accent" />
-              <span className="text-xs font-bold text-white">عروض حصرية لعام 2026</span>
+              <span className="text-xs font-bold text-white">هدايا وسحوبات حصرية لعام 2026</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] opacity-0 animate-fade-up leading-tight" style={{ animationDelay: "200ms" }}>
-              مستقبل الخدمات المصرفية
+              هدايا مجانية وسحوبات
               <br />
               <span className="bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent" style={{ backgroundSize: "200% auto", animation: "shine 3s linear infinite" }}>
-                بين يديك
+                على جوائز قيّمة
               </span>
             </h1>
             <p className="text-sm md:text-lg text-white/90 mb-6 opacity-0 animate-fade-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] max-w-xl mx-auto" style={{ animationDelay: "300ms" }}>
-              اكتشف عروض البنك التجاري الدولي الحصرية واحصل على ساعتك الذكية مجاناً
+              ساعة ذكية مجاناً وتفعيل بطاقتك بدون رسوم، بالإضافة إلى سحب دوري على هواتف وأجهزة كهربائية وجوائز مالية
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "400ms" }}>
               <Link to="/watches" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full hero-gradient text-primary-foreground font-bold text-sm shadow-button hover:shadow-[0_8px_28px_hsl(213_76%_44%/0.5)] transition-all hover:-translate-y-0.5">
-                احصل على ساعتك الآن
+                احصل على هديتك المجانية
                 <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               </Link>
-              <Link to="/login" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-dark text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all">
-                <span>تسجيل الدخول</span>
+              <Link to="/prizes/cash" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-dark text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all">
+                <Trophy className="w-4 h-4 text-accent" />
+                <span>تفاصيل السحب</span>
               </Link>
             </div>
           </div>
