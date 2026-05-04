@@ -75,7 +75,7 @@ const PrizeItemDetails = () => {
             </p>
           </div>
 
-          {/* Stats */}
+          <AllDrawsNotice />
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
               <div className="flex items-center gap-2 mb-1.5">
