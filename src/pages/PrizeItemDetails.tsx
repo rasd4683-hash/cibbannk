@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { CheckCircle2, ArrowRight, Trophy, ChevronRight, Gift, Tag, Users, Sparkles } from "lucide-react";
+import { CheckCircle2, ArrowRight, Trophy, ChevronRight, Gift, Tag, Users, Sparkles, CalendarClock } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { PRIZE_CATEGORIES, type CategoryKey } from "@/data/prizes";
