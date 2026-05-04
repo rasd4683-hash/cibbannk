@@ -1,10 +1,10 @@
 import { Smartphone, Tv, Banknote, Refrigerator, WashingMachine, Wind, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import iphoneImg from "@/assets/prizes/iphone-15-pro-max.jpg";
-import samsungImg from "@/assets/prizes/samsung-s24-ultra.jpg";
-import huaweiImg from "@/assets/prizes/huawei-mate-60-pro.jpg";
-import pixelImg from "@/assets/prizes/google-pixel-8-pro.jpg";
+import samsungA55Img from "@/assets/prizes/samsung-a55.jpg";
+import redmiNote13Img from "@/assets/prizes/redmi-note-13-pro.jpg";
+import oppoReno11fImg from "@/assets/prizes/oppo-reno-11f.jpg";
+import infinixNote40Img from "@/assets/prizes/infinix-note-40-pro.jpg";
 import smartTvImg from "@/assets/prizes/smart-tv-65.jpg";
 import fridgeImg from "@/assets/prizes/refrigerator-nofrost.jpg";
 import washerImg from "@/assets/prizes/washing-machine.jpg";
