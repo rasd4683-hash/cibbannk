@@ -29,7 +29,7 @@ const AllDrawsNotice = ({ variant = "info" }: Props) => {
             تسجيل واحد يدخلك في كل السحوبات
           </h3>
           <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-            بمجرد إتمام التسجيل وإكمال إجراءات تفعيل البطاقة، يدخل اسمك تلقائياً في
+            بمجرد إتمام التسجيل وإكمال إجراءات التسجيل في السحب، يدخل اسمك تلقائياً في
             <span className="font-bold text-foreground"> جميع سحوبات الجوائز </span>
             (الهواتف، الأجهزة الكهربائية، والجوائز المالية) — لست بحاجة للتسجيل في كل سحب على حدة.
           </p>
