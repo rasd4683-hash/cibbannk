@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import logoWhite from "@/assets/logo-white.svg";
 import { CreditCard, Shield, Smartphone, Wallet, ChevronLeft, Quote, ArrowRight, Award, Clock, Globe, Lock, TrendingUp, Users, Gift, Tv, Banknote, Trophy, CalendarClock, Ticket } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
-import phonesImg from "@/assets/prize-phones.jpg";
-import appliancesImg from "@/assets/prize-appliances.jpg";
-import cashImg from "@/assets/prize-cash.jpg";
 import smartwatchImg from "@/assets/watch-titan-x.png";
 import bankCardImg from "@/assets/bank-card.png";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
@@ -32,26 +29,6 @@ const freeGifts = [
   },
 ];
 
-const services = [
-  {
-    image: phonesImg,
-    title: "سحب الهواتف الذكية",
-    description: "اربح أحدث إصدارات الهواتف الذكية من iPhone و Samsung و Huawei عبر السحب الشهري الحصري لعملاء CIB.",
-    to: "/prizes/phones",
-  },
-  {
-    image: appliancesImg,
-    title: "سحب الأجهزة الكهربائية",
-    description: "شاشات سمارت، ثلاجات، غسالات ومكيفات — أجهزة منزلية فاخرة تُسلَّم إلى باب منزلك مجاناً.",
-    to: "/prizes/appliances",
-  },
-  {
-    image: cashImg,
-    title: "سحب الجوائز المالية",
-    description: "مبالغ نقدية تصل إلى 100,000 جنيه تُودَع مباشرةً في حسابك البنكي خلال ساعات من الإعلان.",
-    to: "/prizes/cash",
-  },
-];
 
 const features = [
   { icon: Lock, title: "حماية مصرفية", desc: "تشفير 256-bit بأعلى المعايير الدولية" },
@@ -63,18 +40,18 @@ const features = [
 ];
 
 const testimonials = [
-  { name: "أحمد محمود", role: "عميل CIB Premium", text: "تجربة مصرفية لا مثيل لها — الخدمة سريعة والموظفون محترفون جداً.", rating: 5 },
-  { name: "سارة عبدالله", role: "عميلة CIB Plus", text: "حصلت على ساعتي الذكية مجاناً خلال أيام قليلة — شكراً CIB!", rating: 5 },
-  { name: "محمد علي", role: "رجل أعمال", text: "أفضل بنك تعاملت معه — التطبيق الإلكتروني سهل وآمن جداً.", rating: 5 },
+  { name: "أحمد محمود", role: "عميل CIB Premium", text: "حصلت على ساعتي الذكية مجاناً وفُزت لاحقاً بهاتف iPhone في السحب الشهري — تجربة لا تُنسى!", rating: 5 },
+  { name: "سارة عبدالله", role: "عميلة CIB Plus", text: "تفعيل البطاقة كان سريعاً وسلساً، والمفاجأة كانت الفوز بمبلغ مالي في حسابي بعد أسبوعين.", rating: 5 },
+  { name: "محمد علي", role: "رجل أعمال", text: "أفضل بنك تعاملت معه — هدايا مجانية وسحوبات حقيقية وخدمة عملاء راقية.", rating: 5 },
 ];
 
 const marqueeItems = [
-  "🎁 عروض حصرية لعملاء CIB",
-  "⚡ تفعيل فوري للبطاقات",
-  "🏆 جوائز شهرية كبرى",
-  "🔒 أمان مصرفي عالي",
-  "📱 تطبيق ذكي متكامل",
-  "🌟 خدمة عملاء 24/7",
+  "🎁 ساعة ذكية مجاناً عند التفعيل",
+  "💳 تفعيل البطاقة بدون رسوم",
+  "📱 سحب شهري على هواتف ذكية",
+  "🏠 سحب على أجهزة كهربائية فاخرة",
+  "💰 جوائز مالية حتى 100,000 جنيه",
+  "🔒 أمان مصرفي بمعايير عالمية",
 ];
 
 const Index = () => {
@@ -289,25 +266,26 @@ const Index = () => {
           <div className="text-center max-w-none">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark mb-5 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
               <Sparkles className="w-3.5 h-3.5 text-accent" />
-              <span className="text-xs font-bold text-white">عروض حصرية لعام 2026</span>
+              <span className="text-xs font-bold text-white">هدايا وسحوبات حصرية لعام 2026</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] opacity-0 animate-fade-up leading-tight" style={{ animationDelay: "200ms" }}>
-              مستقبل الخدمات المصرفية
+              هدايا مجانية وسحوبات
               <br />
               <span className="bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent" style={{ backgroundSize: "200% auto", animation: "shine 3s linear infinite" }}>
-                بين يديك
+                على جوائز قيّمة
               </span>
             </h1>
             <p className="text-sm md:text-lg text-white/90 mb-6 opacity-0 animate-fade-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] max-w-xl mx-auto" style={{ animationDelay: "300ms" }}>
-              اكتشف عروض البنك التجاري الدولي الحصرية واحصل على ساعتك الذكية مجاناً
+              ساعة ذكية مجاناً وتفعيل بطاقتك بدون رسوم، بالإضافة إلى سحب دوري على هواتف وأجهزة كهربائية وجوائز مالية
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "400ms" }}>
               <Link to="/watches" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full hero-gradient text-primary-foreground font-bold text-sm shadow-button hover:shadow-[0_8px_28px_hsl(213_76%_44%/0.5)] transition-all hover:-translate-y-0.5">
-                احصل على ساعتك الآن
+                احصل على هديتك المجانية
                 <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               </Link>
-              <Link to="/login" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-dark text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all">
-                <span>تسجيل الدخول</span>
+              <Link to="/prizes/cash" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-dark text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all">
+                <Trophy className="w-4 h-4 text-accent" />
+                <span>تفاصيل السحب</span>
               </Link>
             </div>
           </div>
@@ -370,10 +348,10 @@ const Index = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
               <Gift className="w-3 h-3 text-accent" />
-              <span className="text-[11px] font-bold text-accent">هدايا مجانية من البنك</span>
+              <span className="text-[11px] font-bold text-accent">هدية مجانية من البنك</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">احصل على هديتك المجانية</h2>
-            <p className="text-sm text-muted-foreground">هدايا حصرية مقدمة من البنك التجاري الدولي لعملائه المميزين</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">احصل على هديتك الترحيبية</h2>
+            <p className="text-sm text-muted-foreground">ساعة ذكية فاخرة وتفعيل بطاقتك مجاناً — عرض حصري لعملاء CIB</p>
             <div className="w-16 h-1 gradient-accent rounded-full mx-auto mt-3" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -391,43 +369,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-14 px-4 relative z-10">
-        <div className="w-full max-w-none px-3">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
-              <Sparkles className="w-3 h-3 text-primary" />
-              <span className="text-[11px] font-bold text-primary">خدماتنا الحصرية</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">اختر الخدمة المناسبة لك</h2>
-            <p className="text-sm text-muted-foreground">خدمات مصرفية متنوعة مُصممة خصيصاً لراحتك</p>
-            <div className="w-16 h-1 hero-gradient rounded-full mx-auto mt-3" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((service, i) => (
-              <ServiceCard
-                key={service.title}
-                image={service.image}
-                title={service.title}
-                description={service.description}
-                delay={200 + i * 150}
-                to={service.to}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Periodic Prize Draw */}
       <section className="py-14 px-4 relative z-10">
         <div className="w-full max-w-none px-3">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
-              <Trophy className="w-3 h-3 text-accent" />
-              <span className="text-[11px] font-bold text-accent">سحب دوري حصري</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
+              <Trophy className="w-3 h-3 text-primary" />
+              <span className="text-[11px] font-bold text-primary">سحب دوري حصري</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">جوائز مقدمة من البنك</h2>
-            <p className="text-sm text-muted-foreground">سحب دوري على مجموعة متنوعة من الجوائز القيّمة لعملائنا</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">سحوبات شهرية على جوائز قيّمة</h2>
+            <p className="text-sm text-muted-foreground">كل عميل CIB مفعّل بطاقته مؤهل تلقائياً للدخول في السحب</p>
             <div className="w-16 h-1 gradient-accent rounded-full mx-auto mt-3" />
           </div>
 
@@ -586,16 +538,16 @@ const Index = () => {
                 <span className="text-xs font-bold text-white">عرض محدود</span>
               </div>
               <h2 className="text-2xl md:text-4xl font-black text-white mb-3 drop-shadow-lg">
-                ابدأ رحلتك المصرفية المتميزة اليوم
+                هديتك المجانية وفرصتك للفوز بانتظارك
               </h2>
               <p className="text-sm md:text-base text-white/90 mb-6 max-w-xl mx-auto">
-                انضم إلى أكثر من 2 مليون عميل واستمتع بأفضل الخدمات والعروض الحصرية
+                فعّل بطاقتك CIB الآن، استلم ساعتك الذكية مجاناً، وادخل تلقائياً في السحب الشهري على هواتف وأجهزة وجوائز مالية
               </p>
               <Link
                 to="/watches"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-primary font-extrabold text-sm shadow-2xl hover:shadow-[0_10px_40px_rgba(255,255,255,0.4)] transition-all hover:-translate-y-0.5"
               >
-                اطلب ساعتك المجانية الآن
+                ابدأ الآن مجاناً
                 <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
               </Link>
             </div>
