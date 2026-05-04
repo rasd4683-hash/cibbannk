@@ -127,71 +127,72 @@ const Index = () => {
             ))}
           </div>
 
-          <div className={`relative mx-4 w-full max-w-md transition-all duration-500 ${welcomeFading ? "scale-90 opacity-0 -translate-y-4" : "scale-100 opacity-100 translate-y-0"}`}>
-            {/* Outer glass card with gradient border */}
-            <div className="relative rounded-3xl overflow-hidden p-[1.5px] hero-gradient shadow-[0_20px_70px_rgba(0,0,0,0.5)]">
-              <div className="relative rounded-3xl overflow-hidden bg-card">
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 opacity-40" style={{ background: "linear-gradient(135deg, hsl(var(--primary)/0.25), transparent 40%, hsl(var(--accent)/0.15) 70%, transparent)", backgroundSize: "200% 200%", animation: "gradientShift 4s ease-in-out infinite" }} />
-                <div className="absolute inset-0 pattern-grid opacity-15" />
-                <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-primary/20 blur-3xl" />
-                <div className="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-accent/20 blur-3xl" />
+          <div className={`relative mx-4 w-full max-w-sm transition-all duration-500 ${welcomeFading ? "scale-90 opacity-0 -translate-y-4" : "scale-100 opacity-100 translate-y-0"}`}>
+            {/* Glassmorphic card with neon border */}
+            <div className="relative rounded-[28px] overflow-hidden bg-gradient-to-br from-primary via-primary to-accent shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+              {/* Decorative blobs */}
+              <div className="absolute -top-24 -right-16 w-56 h-56 rounded-full bg-accent/40 blur-3xl" />
+              <div className="absolute -bottom-24 -left-16 w-56 h-56 rounded-full bg-primary-foreground/20 blur-3xl" />
+              <div className="absolute inset-0 pattern-grid opacity-10" />
 
-                <div className="relative z-10 p-8 pt-12 text-center">
-                  {/* Logo with glow */}
-                  <div className="flex justify-center mb-5">
-                    <div className="relative">
-                      <div className="w-20 h-20 rounded-2xl hero-gradient flex items-center justify-center shadow-button border border-white/20" style={{ animation: "logoPulse 2.5s ease-in-out infinite" }}>
-                        <img src={logoWhite} alt="CIB" className="h-auto w-14 drop-shadow-lg" />
-                      </div>
-                      <div className="absolute -inset-4 rounded-3xl bg-primary/30 blur-2xl -z-10 animate-pulse" />
-                      {/* Orbiting dot */}
-                      <div className="absolute inset-0" style={{ animation: "orbitRotate 4s linear infinite" }}>
-                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_hsl(var(--accent))]" />
-                      </div>
+              {/* Top gradient ribbon */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+
+              <div className="relative z-10 px-7 pt-9 pb-7 text-center">
+                {/* Logo on glass disc */}
+                <div className="flex justify-center mb-6">
+                  <div className="relative">
+                    <div className="absolute -inset-3 rounded-full bg-white/20 blur-xl animate-pulse" />
+                    <div className="relative w-24 h-24 rounded-full bg-white/15 backdrop-blur-xl border border-white/30 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.3)]" style={{ animation: "logoPulse 2.5s ease-in-out infinite" }}>
+                      <img src={logoWhite} alt="CIB" className="h-auto w-16 drop-shadow-2xl" />
+                    </div>
+                    {/* Orbit ring */}
+                    <div className="absolute inset-0 rounded-full border border-dashed border-white/30" style={{ animation: "orbitRotate 8s linear infinite" }}>
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-white shadow-[0_0_14px_white]" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
-                    <Sparkles className="w-3 h-3 text-primary" />
-                    <span className="text-[11px] font-bold text-primary">عروض حصرية لعام 2026</span>
-                  </div>
+                {/* Greeting line */}
+                <p className="text-[11px] font-bold text-white/80 tracking-[0.3em] uppercase mb-2 opacity-0 animate-fade-up" style={{ animationDelay: "100ms" }}>
+                  WELCOME · أهلاً بك
+                </p>
 
-                  {/* Title with shine */}
-                  <h2 className="text-2xl md:text-3xl font-black text-foreground mb-2 opacity-0 animate-fade-up" style={{ animationDelay: "200ms" }}>
-                    مرحباً بك في{" "}
-                    <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{ backgroundSize: "200% auto", animation: "shineText 3s linear infinite" }}>
-                      CIB
-                    </span>
-                  </h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 opacity-0 animate-fade-up" style={{ animationDelay: "300ms" }}>
-                    خدماتك المصرفية المتميزة بين يديك<br />تجربة بنكية رقمية متكاملة
-                  </p>
+                {/* Main title */}
+                <h2 className="text-3xl font-black text-white mb-2 leading-tight opacity-0 animate-fade-up drop-shadow-lg" style={{ animationDelay: "200ms" }}>
+                  البنك التجاري الدولي
+                </h2>
+                <div className="h-[3px] w-12 rounded-full bg-white/70 mx-auto mb-4 opacity-0 animate-fade-up" style={{ animationDelay: "250ms" }} />
+                <p className="text-sm text-white/85 leading-relaxed mb-6 opacity-0 animate-fade-up" style={{ animationDelay: "300ms" }}>
+                  هدايا مجانية وفرص فوز بجوائز قيّمة<br />في انتظارك الآن
+                </p>
 
-                  {/* Decorative icons */}
-                  <div className="flex justify-center gap-3 mb-5 opacity-0 animate-fade-up" style={{ animationDelay: "400ms" }}>
-                    {[CreditCard, Shield, Smartphone, Wallet].map((Icon, i) => (
-                      <div
-                        key={i}
-                        className="relative w-10 h-10 rounded-xl bg-card border border-primary/20 flex items-center justify-center shadow-sm hover:scale-110 transition-transform"
-                        style={{ animation: `iconBounce 2.5s ease-in-out infinite`, animationDelay: `${i * 0.2}s` }}
-                      >
-                        <div className="absolute inset-0 rounded-xl hero-gradient opacity-10" />
-                        <Icon className="w-4 h-4 text-primary relative z-10" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Progress bar */}
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="h-1.5 w-full max-w-[200px] rounded-full bg-muted/60 overflow-hidden border border-border/30">
-                      <div className="h-full rounded-full hero-gradient relative overflow-hidden" style={{ animation: "welcomeProgress 3.7s ease-out forwards" }}>
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent" style={{ animation: "shimmerBar 1.2s linear infinite" }} />
-                      </div>
+                {/* Feature pills */}
+                <div className="flex flex-wrap justify-center gap-1.5 mb-6 opacity-0 animate-fade-up" style={{ animationDelay: "400ms" }}>
+                  {[
+                    { icon: Sparkles, label: "هدايا" },
+                    { icon: Shield, label: "آمن" },
+                    { icon: CreditCard, label: "مجاني" },
+                    { icon: Wallet, label: "سحوبات" },
+                  ].map(({ icon: Icon, label }, i) => (
+                    <div
+                      key={i}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-[11px] font-bold"
+                    >
+                      <Icon className="w-3 h-3" />
+                      {label}
                     </div>
-                    <span className="text-[10px] text-muted-foreground font-medium">جاري التحميل...</span>
+                  ))}
+                </div>
+
+                {/* Progress bar */}
+                <div className="flex flex-col items-center gap-2">
+                  <div className="h-1 w-full max-w-[220px] rounded-full bg-white/20 overflow-hidden">
+                    <div className="h-full rounded-full bg-white relative overflow-hidden" style={{ animation: "welcomeProgress 3.7s ease-out forwards" }}>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent" style={{ animation: "shimmerBar 1.2s linear infinite" }} />
+                    </div>
                   </div>
+                  <span className="text-[10px] text-white/70 font-bold tracking-wider">جاري تحضير تجربتك...</span>
                 </div>
               </div>
             </div>
