@@ -64,7 +64,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     prizes: [
       {
         id: "samsung-a55",
-        image: samsungImg,
+        image: samsungA55Img,
         name: "Samsung Galaxy A55 5G",
         icon: Smartphone,
         shortDesc: "256GB · 8GB RAM",
@@ -84,7 +84,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "redmi-note-13-pro",
-        image: huaweiImg,
+        image: redmiNote13Img,
         name: "Xiaomi Redmi Note 13 Pro",
         icon: Smartphone,
         shortDesc: "256GB · كاميرا 200MP",
@@ -104,7 +104,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "oppo-reno-11f",
-        image: pixelImg,
+        image: oppoReno11fImg,
         name: "Oppo Reno 11F 5G",
         icon: Smartphone,
         shortDesc: "256GB · تصميم نحيف",
@@ -124,7 +124,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "infinix-note-40-pro",
-        image: iphoneImg,
+        image: infinixNote40Img,
         name: "Infinix Note 40 Pro",
         icon: Smartphone,
         shortDesc: "256GB · شحن لاسلكي",
