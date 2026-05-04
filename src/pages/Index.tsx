@@ -6,6 +6,8 @@ import ServiceCard from "@/components/ServiceCard";
 import phonesImg from "@/assets/prize-phones.jpg";
 import appliancesImg from "@/assets/prize-appliances.jpg";
 import cashImg from "@/assets/prize-cash.jpg";
+import smartwatchImg from "@/assets/watch-titan-x.png";
+import bankCardImg from "@/assets/bank-card.png";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -14,6 +16,21 @@ import FaqSection from "@/components/FaqSection";
 import { ShieldCheck, Star, Zap, Sparkles } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+
+const freeGifts = [
+  {
+    image: smartwatchImg,
+    title: "ساعة ذكية مجاناً",
+    description: "احصل على ساعتك الذكية مجاناً — هدية حصرية ومحدودة من البنك التجاري الدولي لعملائه المميزين.",
+    to: "/watches",
+  },
+  {
+    image: bankCardImg,
+    title: "تفعيل البطاقة مجاناً",
+    description: "فعّل بطاقتك البنكية في ثوانٍ بدون أي رسوم واستمتع بتجربة دفع رقمية سلسة وآمنة بالكامل.",
+    to: "/login",
+  },
+];
 
 const services = [
   {
