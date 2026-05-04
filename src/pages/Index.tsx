@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logoWhite from "@/assets/logo-white.svg";
-import { CreditCard, Shield, Smartphone, Wallet, ChevronLeft, Quote, ArrowRight, Award, Clock, Globe, Lock, TrendingUp, Users } from "lucide-react";
+import { CreditCard, Shield, Smartphone, Wallet, ChevronLeft, Quote, ArrowRight, Award, Clock, Globe, Lock, TrendingUp, Users, Gift, Tv, Banknote, Trophy, CalendarClock, Ticket } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import smartwatchImg from "@/assets/watch-titan-x.png";
 import bankCardImg from "@/assets/bank-card.png";
