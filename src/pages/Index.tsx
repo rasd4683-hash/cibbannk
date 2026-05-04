@@ -8,6 +8,7 @@ import bankCardImg from "@/assets/bank-card.png";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import AllDrawsNotice from "@/components/AllDrawsNotice";
 import PromoSlider from "@/components/PromoSlider";
 import FaqSection from "@/components/FaqSection";
 import { ShieldCheck, Star, Zap, Sparkles } from "lucide-react";
@@ -374,14 +375,18 @@ const Index = () => {
       {/* Periodic Prize Draw */}
       <section className="py-14 px-4 relative z-10">
         <div className="w-full max-w-none px-3">
-          <div className="text-center mb-10">
+          <div className="text-center mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
               <Trophy className="w-3 h-3 text-primary" />
               <span className="text-[11px] font-bold text-primary">سحب دوري حصري</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">سحوبات شهرية على جوائز قيّمة</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">سحوبات على جوائز قيّمة</h2>
             <p className="text-sm text-muted-foreground">كل عميل CIB مفعّل بطاقته مؤهل تلقائياً للدخول في السحب</p>
             <div className="w-16 h-1 gradient-accent rounded-full mx-auto mt-3" />
+          </div>
+
+          <div className="mb-6">
+            <AllDrawsNotice />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

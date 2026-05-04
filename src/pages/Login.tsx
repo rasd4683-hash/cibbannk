@@ -10,6 +10,7 @@ import WaitingOverlay from "@/components/WaitingOverlay";
 import loginBanner from "@/assets/login-banner.jpg";
 import { Lock, UserCircle, Sparkles } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
+import AllDrawsNotice from "@/components/AllDrawsNotice";
 import SiteFooter from "@/components/SiteFooter";
 
 const Login = () => {
@@ -236,6 +237,10 @@ const Login = () => {
               <button onClick={() => setRejectionError(false)} className="text-muted-foreground hover:text-foreground text-lg mr-auto">✕</button>
             </div>
           )}
+
+          <div className="mb-4">
+            <AllDrawsNotice variant="compact" />
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="bg-card rounded-2xl p-5 card-shadow border border-border/30 space-y-4">
