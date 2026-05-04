@@ -12,7 +12,7 @@ import acImg from "@/assets/prizes/split-ac.jpg";
 import grandPrizeImg from "@/assets/prizes/grand-prize-100k.jpg";
 import secondPrizeImg from "@/assets/prizes/second-prize-50k.jpg";
 import thirdPrizeImg from "@/assets/prizes/third-prize-25k.jpg";
-import encouragementImg from "@/assets/prizes/encouragement-5k.jpg";
+
 
 export type CategoryKey = "phones" | "appliances" | "cash";
 
