@@ -61,20 +61,27 @@ const PrizeItemDetails = () => {
       <section className="py-12 px-4 relative z-10">
         <div className="max-w-3xl mx-auto space-y-6">
           {/* Stats */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
               <div className="flex items-center gap-2 mb-1.5">
                 <Tag className="w-4 h-4 text-primary" />
-                <span className="text-[11px] font-bold text-muted-foreground">قيمة الجائزة</span>
+                <span className="text-[11px] font-bold text-muted-foreground">القيمة</span>
               </div>
-              <p className="text-lg font-black text-foreground">{prize.value}</p>
+              <p className="text-base font-black text-foreground">{prize.value}</p>
             </div>
             <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
               <div className="flex items-center gap-2 mb-1.5">
                 <Users className="w-4 h-4 text-accent" />
-                <span className="text-[11px] font-bold text-muted-foreground">عدد الفائزين</span>
+                <span className="text-[11px] font-bold text-muted-foreground">الفائزين</span>
               </div>
-              <p className="text-lg font-black text-foreground">{prize.quantity} فائز</p>
+              <p className="text-base font-black text-foreground">{prize.quantity} فائز</p>
+            </div>
+            <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
+              <div className="flex items-center gap-2 mb-1.5">
+                <CalendarClock className="w-4 h-4 text-primary" />
+                <span className="text-[11px] font-bold text-muted-foreground">التكرار</span>
+              </div>
+              <p className="text-base font-black text-foreground">{prize.frequency}</p>
             </div>
           </div>
 
