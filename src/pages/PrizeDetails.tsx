@@ -75,6 +75,9 @@ const PrizeDetails = () => {
                     <span className="absolute top-3 left-3 text-[10px] font-bold px-2 py-1 rounded-full bg-white/90 text-primary border border-white/40 backdrop-blur-sm">
                       {prize.quantity} فائز
                     </span>
+                    <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-1 rounded-full bg-primary/90 text-primary-foreground border border-white/30 backdrop-blur-sm">
+                      {prize.frequency}
+                    </span>
                     <div className="absolute bottom-2 right-3 left-3">
                       <p className="text-[10px] font-bold text-white/80">{prize.shortDesc}</p>
                     </div>
