@@ -26,6 +26,7 @@ export interface PrizeItem {
   description: string;
   features: string[];
   quantity: number;
+  frequency: string;
 }
 
 export interface PrizeCategory {
@@ -79,6 +80,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان الوكيل سامسونج مصر",
         ],
         quantity: 5,
+        frequency: "سحب شهري",
       },
       {
         id: "redmi-note-13-pro",
@@ -98,6 +100,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "بطارية 5100 mAh",
         ],
         quantity: 8,
+        frequency: "سحب أسبوعي",
       },
       {
         id: "oppo-reno-11f",
@@ -117,6 +120,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "تصميم نحيف 7.5mm",
         ],
         quantity: 6,
+        frequency: "سحب شهري",
       },
       {
         id: "infinix-note-40-pro",
@@ -136,6 +140,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "بطارية 5000 mAh",
         ],
         quantity: 10,
+        frequency: "سحب أسبوعي",
       },
     ],
   },
@@ -177,6 +182,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان شامل 3 سنوات",
         ],
         quantity: 5,
+        frequency: "سحب شهري",
       },
       {
         id: "refrigerator-nofrost",
@@ -196,6 +202,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان 10 سنوات على الموتور",
         ],
         quantity: 8,
+        frequency: "سحب شهري",
       },
       {
         id: "washing-machine",
@@ -215,6 +222,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "كفاءة طاقة A+++",
         ],
         quantity: 10,
+        frequency: "سحب أسبوعي",
       },
       {
         id: "split-ac",
@@ -234,6 +242,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان 5 سنوات على الكومبروسر",
         ],
         quantity: 7,
+        frequency: "سحب شهري",
       },
     ],
   },
@@ -241,9 +250,9 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     key: "cash",
     icon: Banknote,
     title: "الجوائز المالية",
-    tagline: "ثلاث جوائز مالية ضخمة كل 3 أشهر",
+    tagline: "جوائز نقدية أسبوعية وشهرية وجائزة كبرى كل 3 أشهر",
     description:
-      "اربح مبالغ نقدية قيّمة تُحوّل مباشرة إلى حسابك البنكي خلال ساعات من إعلان النتائج، دون أي رسوم أو خصومات. السحب يُجرى كل 3 أشهر على ثلاث جوائز.",
+      "اربح مبالغ نقدية قيّمة تُحوّل مباشرة إلى حسابك البنكي خلال ساعات من إعلان النتائج، دون أي رسوم أو خصومات. سحوبات أسبوعية وشهرية بالإضافة إلى الجائزة الكبرى كل 3 أشهر.",
     eligibility: [
       "أن تكون عميلاً نشطاً لدى البنك التجاري الدولي CIB",
       "تفعيل البطاقة البنكية بنجاح",
@@ -251,7 +260,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     ],
     howToWin: [
       "كل عميل CIB مؤهل تلقائياً عند تفعيل بطاقته",
-      "سحب ربع سنوي (كل 3 أشهر) على ثلاث جوائز مالية",
+      "سحوبات أسبوعية وشهرية + الجائزة الكبرى كل 3 أشهر",
       "إيداع المبلغ مباشرة في حسابك البنكي خلال 24 ساعة",
       "إشعار فوري عبر الرسائل النصية والبريد الإلكتروني",
     ],
@@ -275,44 +284,47 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "إشعار فوري عبر SMS",
         ],
         quantity: 1,
+        frequency: "سحب كل 3 أشهر",
       },
       {
-        id: "second-prize-500k",
+        id: "monthly-prize-100k",
         image: secondPrizeImg,
-        name: "الجائزة الثانية",
+        name: "الجائزة الشهرية",
         icon: Wallet,
-        shortDesc: "500,000 جنيه نقداً",
-        value: "500,000 جنيه",
+        shortDesc: "100,000 جنيه × 3 فائزين شهرياً",
+        value: "100,000 جنيه",
         description:
-          "الجائزة الثانية للسحب الربع سنوي — مبلغ 500,000 جنيه يُودَع في حساب الفائز خلال يوم عمل واحد.",
+          "ثلاثة فائزين كل شهر يحصل كل منهم على 100,000 جنيه تُودَع مباشرة في حسابهم البنكي خلال يوم عمل واحد.",
         features: [
-          "مبلغ 500,000 جنيه مصري",
+          "مبلغ 100,000 جنيه لكل فائز",
+          "3 فائزين كل شهر",
           "إيداع فوري في الحساب",
-          "فائز واحد كل 3 أشهر",
           "بدون رسوم تحويل",
           "لجميع فئات بطاقات CIB",
           "إشعار رسمي من البنك",
         ],
-        quantity: 1,
+        quantity: 3,
+        frequency: "سحب شهري",
       },
       {
-        id: "third-prize-250k",
+        id: "weekly-prize-25k",
         image: thirdPrizeImg,
-        name: "الجائزة الثالثة",
+        name: "الجائزة الأسبوعية",
         icon: Wallet,
-        shortDesc: "250,000 جنيه نقداً",
-        value: "250,000 جنيه",
+        shortDesc: "25,000 جنيه × 5 فائزين أسبوعياً",
+        value: "25,000 جنيه",
         description:
-          "الجائزة الثالثة في السحب الربع سنوي — مبلغ 250,000 جنيه يُودَع مباشرة في حساب الفائز.",
+          "خمسة فائزين كل أسبوع يحصل كل منهم على 25,000 جنيه تُودَع مباشرة في حساباتهم — فرص فوز متعددة على مدار الشهر.",
         features: [
-          "مبلغ 250,000 جنيه مصري",
-          "فائز واحد كل 3 أشهر",
+          "مبلغ 25,000 جنيه لكل فائز",
+          "5 فائزين كل أسبوع",
           "إيداع مباشر في الحساب",
           "بدون رسوم أو ضرائب",
           "متاح للجميع تلقائياً",
           "إشعار عبر التطبيق والـ SMS",
         ],
-        quantity: 1,
+        quantity: 5,
+        frequency: "سحب أسبوعي",
       },
     ],
   },
