@@ -280,16 +280,6 @@ const Index = () => {
             <p className="text-sm md:text-lg text-white/90 mb-6 opacity-0 animate-fade-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] max-w-xl mx-auto" style={{ animationDelay: "300ms" }}>
               ساعة ذكية مجاناً وتفعيل بطاقتك بدون رسوم، بالإضافة إلى سحب دوري على هواتف وأجهزة كهربائية وجوائز مالية
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "400ms" }}>
-              <Link to="/watches" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full hero-gradient text-primary-foreground font-bold text-sm shadow-button hover:shadow-[0_8px_28px_hsl(213_76%_44%/0.5)] transition-all hover:-translate-y-0.5">
-                احصل على هديتك المجانية
-                <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/prizes/cash" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-dark text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all">
-                <Trophy className="w-4 h-4 text-accent" />
-                <span>تفاصيل السحب</span>
-              </Link>
-            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent" />
