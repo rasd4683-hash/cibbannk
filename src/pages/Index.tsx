@@ -383,13 +383,14 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { icon: Smartphone, title: "هواتف ذكية", desc: "أحدث إصدارات الهواتف من أشهر الماركات العالمية", tag: "iPhone · Samsung · Huawei", grad: "from-primary to-primary/60" },
-              { icon: Tv, title: "أجهزة كهربائية", desc: "شاشات، ثلاجات، غسالات وأجهزة منزلية متكاملة", tag: "أجهزة منزلية فاخرة", grad: "from-accent to-accent/60" },
-              { icon: Banknote, title: "جوائز مالية", desc: "مبالغ نقدية تُودَع مباشرةً في حسابك البنكي", tag: "حتى 100,000 جنيه", grad: "from-primary via-accent to-primary" },
+              { slug: "phones", icon: Smartphone, title: "هواتف ذكية", desc: "أحدث إصدارات الهواتف من أشهر الماركات العالمية", tag: "iPhone · Samsung · Huawei", grad: "from-primary to-primary/60" },
+              { slug: "appliances", icon: Tv, title: "أجهزة كهربائية", desc: "شاشات، ثلاجات، غسالات وأجهزة منزلية متكاملة", tag: "أجهزة منزلية فاخرة", grad: "from-accent to-accent/60" },
+              { slug: "cash", icon: Banknote, title: "جوائز مالية", desc: "مبالغ نقدية تُودَع مباشرةً في حسابك البنكي", tag: "حتى 100,000 جنيه", grad: "from-primary via-accent to-primary" },
             ].map((p, i) => (
-              <div
+              <Link
+                to={`/prizes/${p.slug}`}
                 key={p.title}
-                className="group relative bg-card rounded-2xl p-6 border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                className="group relative bg-card rounded-2xl p-6 border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden block"
                 style={{ animationDelay: `${i * 120}ms` }}
               >
                 <div className={`absolute -top-16 -left-16 w-40 h-40 rounded-full bg-gradient-to-br ${p.grad} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`} />
@@ -399,12 +400,18 @@ const Index = () => {
                   </div>
                   <h3 className="text-lg font-extrabold text-foreground mb-1.5">{p.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed mb-3">{p.desc}</p>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/60 border border-border/40">
-                    <Gift className="w-3 h-3 text-primary" />
-                    <span className="text-[10px] font-bold text-foreground">{p.tag}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/60 border border-border/40">
+                      <Gift className="w-3 h-3 text-primary" />
+                      <span className="text-[10px] font-bold text-foreground">{p.tag}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
+                      اكتشف المزيد
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
