@@ -60,14 +60,29 @@ const PrizeItemDetails = () => {
 
       <section className="py-12 px-4 relative z-10">
         <div className="max-w-3xl mx-auto space-y-6">
+          {/* Free banner */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-emerald-500/15 border-2 border-emerald-500/40 p-4 text-center">
+            <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-emerald-400/20 blur-2xl" />
+            <div className="relative z-10 flex items-center justify-center gap-2">
+              <Gift className="w-5 h-5 text-emerald-600" />
+              <p className="text-sm md:text-base font-black text-emerald-700">
+                هذه الجائزة مجانية بالكامل — لا تدفع أي رسوم
+              </p>
+            </div>
+            <p className="relative z-10 text-[11px] text-emerald-700/80 font-bold mt-1">
+              تُسلَّم للفائز دون أي مقابل، الأسعار المعروضة للعلم بالقيمة السوقية فقط
+            </p>
+          </div>
+
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
               <div className="flex items-center gap-2 mb-1.5">
                 <Tag className="w-4 h-4 text-primary" />
-                <span className="text-[11px] font-bold text-muted-foreground">القيمة</span>
+                <span className="text-[11px] font-bold text-muted-foreground">القيمة السوقية</span>
               </div>
               <p className="text-base font-black text-foreground">{prize.value}</p>
+              <p className="text-[10px] text-emerald-600 font-bold mt-0.5">للعلم فقط · مجاناً</p>
             </div>
             <div className="bg-card rounded-2xl p-4 border border-border/40 card-shadow">
               <div className="flex items-center gap-2 mb-1.5">

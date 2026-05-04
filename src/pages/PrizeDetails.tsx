@@ -49,6 +49,16 @@ const PrizeDetails = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">{cat.description}</p>
           </div>
 
+          {/* Free banner */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-emerald-500/15 border-2 border-emerald-500/40 p-4 text-center">
+            <div className="flex items-center justify-center gap-2">
+              <Gift className="w-5 h-5 text-emerald-600" />
+              <p className="text-sm md:text-base font-black text-emerald-700">
+                جميع الجوائز مجانية بالكامل — تُسلَّم للفائز دون أي رسوم
+              </p>
+            </div>
+          </div>
+
           {/* Prizes Grid */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -85,7 +95,9 @@ const PrizeDetails = () => {
                   <div className="p-4">
                     <h3 className="text-base font-extrabold text-foreground mb-2">{prize.name}</h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-black text-primary">{prize.value}</span>
+                      <span className="inline-flex items-center gap-1 text-[10px] font-black text-emerald-600 bg-emerald-500/10 border border-emerald-500/30 px-2 py-1 rounded-full">
+                        🎁 مجاناً 100%
+                      </span>
                       <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
                         التفاصيل
                         <ChevronLeft className="w-3.5 h-3.5" />
