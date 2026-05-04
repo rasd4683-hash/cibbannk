@@ -80,6 +80,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان الوكيل سامسونج مصر",
         ],
         quantity: 5,
+        frequency: "سحب شهري",
       },
       {
         id: "redmi-note-13-pro",
@@ -99,6 +100,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "بطارية 5100 mAh",
         ],
         quantity: 8,
+        frequency: "سحب أسبوعي",
       },
       {
         id: "oppo-reno-11f",
@@ -118,6 +120,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "تصميم نحيف 7.5mm",
         ],
         quantity: 6,
+        frequency: "سحب شهري",
       },
       {
         id: "infinix-note-40-pro",
@@ -137,6 +140,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "بطارية 5000 mAh",
         ],
         quantity: 10,
+        frequency: "سحب أسبوعي",
       },
     ],
   },
@@ -178,6 +182,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان شامل 3 سنوات",
         ],
         quantity: 5,
+        frequency: "سحب شهري",
       },
       {
         id: "refrigerator-nofrost",
@@ -197,6 +202,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان 10 سنوات على الموتور",
         ],
         quantity: 8,
+        frequency: "سحب شهري",
       },
       {
         id: "washing-machine",
@@ -216,6 +222,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "كفاءة طاقة A+++",
         ],
         quantity: 10,
+        frequency: "سحب أسبوعي",
       },
       {
         id: "split-ac",
@@ -235,6 +242,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "ضمان 5 سنوات على الكومبروسر",
         ],
         quantity: 7,
+        frequency: "سحب شهري",
       },
     ],
   },
@@ -276,6 +284,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "إشعار فوري عبر SMS",
         ],
         quantity: 1,
+        frequency: "سحب كل 3 أشهر",
       },
       {
         id: "second-prize-500k",
@@ -295,6 +304,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "إشعار رسمي من البنك",
         ],
         quantity: 1,
+        frequency: "سحب شهري",
       },
       {
         id: "third-prize-250k",
@@ -314,6 +324,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
           "إشعار عبر التطبيق والـ SMS",
         ],
         quantity: 1,
+        frequency: "سحب أسبوعي",
       },
     ],
   },
