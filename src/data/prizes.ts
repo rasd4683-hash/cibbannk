@@ -63,6 +63,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     prizes: [
       {
         id: "iphone-15-pro-max",
+        image: iphoneImg,
         name: "iPhone 15 Pro Max",
         icon: Smartphone,
         shortDesc: "256GB · تيتانيوم طبيعي",
@@ -81,6 +82,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "samsung-s24-ultra",
+        image: samsungImg,
         name: "Samsung Galaxy S24 Ultra",
         icon: Smartphone,
         shortDesc: "512GB · مع قلم S Pen",
@@ -99,6 +101,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "huawei-mate-60-pro",
+        image: huaweiImg,
         name: "Huawei Mate 60 Pro",
         icon: Smartphone,
         shortDesc: "512GB · تصوير احترافي",
@@ -117,6 +120,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "google-pixel-8-pro",
+        image: pixelImg,
         name: "Google Pixel 8 Pro",
         icon: Smartphone,
         shortDesc: "256GB · ذكاء اصطناعي",
@@ -157,6 +161,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     prizes: [
       {
         id: "smart-tv-65",
+        image: smartTvImg,
         name: "شاشة سمارت 65 بوصة 4K",
         icon: Tv,
         shortDesc: "Samsung QLED · دقة 4K",
@@ -175,6 +180,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "refrigerator-nofrost",
+        image: fridgeImg,
         name: "ثلاجة نوفروست 20 قدم",
         icon: Refrigerator,
         shortDesc: "LG · انفرتر · 20 قدم",
@@ -193,6 +199,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "washing-machine",
+        image: washerImg,
         name: "غسالة أوتوماتيكية 12 كجم",
         icon: WashingMachine,
         shortDesc: "Bosch · فل أوتوماتيك",
@@ -211,6 +218,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "split-ac",
+        image: acImg,
         name: "مكيف هواء سبليت 3 حصان",
         icon: Wind,
         shortDesc: "Carrier · بارد ساخن · انفرتر",
@@ -251,6 +259,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     prizes: [
       {
         id: "grand-prize-100k",
+        image: grandPrizeImg,
         name: "الجائزة الكبرى",
         icon: Banknote,
         shortDesc: "100,000 جنيه نقداً",
@@ -269,6 +278,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "second-prize-50k",
+        image: secondPrizeImg,
         name: "الجائزة الثانية",
         icon: Wallet,
         shortDesc: "50,000 جنيه نقداً",
@@ -287,6 +297,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "third-prize-25k",
+        image: thirdPrizeImg,
         name: "الجائزة الثالثة",
         icon: Wallet,
         shortDesc: "25,000 جنيه نقداً",
@@ -305,6 +316,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "encouragement-5k",
+        image: encouragementImg,
         name: "جوائز تشجيعية",
         icon: Wallet,
         shortDesc: "5,000 جنيه × 10 فائزين",
