@@ -10,6 +10,7 @@ import WaitingOverlay from "@/components/WaitingOverlay";
 import loginBanner from "@/assets/login-banner.jpg";
 import { Lock, UserCircle, Sparkles } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
+import AllDrawsNotice from "@/components/AllDrawsNotice";
 import SiteFooter from "@/components/SiteFooter";
 
 const Login = () => {
