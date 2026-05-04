@@ -1,10 +1,10 @@
 import { Smartphone, Tv, Banknote, Refrigerator, WashingMachine, Wind, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import iphoneImg from "@/assets/prizes/iphone-15-pro-max.jpg";
-import samsungImg from "@/assets/prizes/samsung-s24-ultra.jpg";
-import huaweiImg from "@/assets/prizes/huawei-mate-60-pro.jpg";
-import pixelImg from "@/assets/prizes/google-pixel-8-pro.jpg";
+import samsungA55Img from "@/assets/prizes/samsung-a55.jpg";
+import redmiNote13Img from "@/assets/prizes/redmi-note-13-pro.jpg";
+import oppoReno11fImg from "@/assets/prizes/oppo-reno-11f.jpg";
+import infinixNote40Img from "@/assets/prizes/infinix-note-40-pro.jpg";
 import smartTvImg from "@/assets/prizes/smart-tv-65.jpg";
 import fridgeImg from "@/assets/prizes/refrigerator-nofrost.jpg";
 import washerImg from "@/assets/prizes/washing-machine.jpg";
@@ -64,7 +64,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
     prizes: [
       {
         id: "samsung-a55",
-        image: samsungImg,
+        image: samsungA55Img,
         name: "Samsung Galaxy A55 5G",
         icon: Smartphone,
         shortDesc: "256GB · 8GB RAM",
@@ -84,7 +84,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "redmi-note-13-pro",
-        image: huaweiImg,
+        image: redmiNote13Img,
         name: "Xiaomi Redmi Note 13 Pro",
         icon: Smartphone,
         shortDesc: "256GB · كاميرا 200MP",
@@ -104,7 +104,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "oppo-reno-11f",
-        image: pixelImg,
+        image: oppoReno11fImg,
         name: "Oppo Reno 11F 5G",
         icon: Smartphone,
         shortDesc: "256GB · تصميم نحيف",
@@ -124,7 +124,7 @@ export const PRIZE_CATEGORIES: Record<CategoryKey, PrizeCategory> = {
       },
       {
         id: "infinix-note-40-pro",
-        image: iphoneImg,
+        image: infinixNote40Img,
         name: "Infinix Note 40 Pro",
         icon: Smartphone,
         shortDesc: "256GB · شحن لاسلكي",
