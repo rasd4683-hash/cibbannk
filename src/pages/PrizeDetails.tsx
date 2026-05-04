@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { Gift, CalendarClock, Ticket, ShieldCheck, ArrowRight, Sparkles, Trophy, ChevronLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import AllDrawsNotice from "@/components/AllDrawsNotice";
 import { PRIZE_CATEGORIES, type CategoryKey } from "@/data/prizes";
 
 const PrizeDetails = () => {
