@@ -1,5 +1,18 @@
-import { Smartphone, Tv, Banknote, Refrigerator, WashingMachine, Wind, Tablet, Watch, Laptop, Car, Plane, Wallet } from "lucide-react";
+import { Smartphone, Tv, Banknote, Refrigerator, WashingMachine, Wind, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+import iphoneImg from "@/assets/prizes/iphone-15-pro-max.jpg";
+import samsungImg from "@/assets/prizes/samsung-s24-ultra.jpg";
+import huaweiImg from "@/assets/prizes/huawei-mate-60-pro.jpg";
+import pixelImg from "@/assets/prizes/google-pixel-8-pro.jpg";
+import smartTvImg from "@/assets/prizes/smart-tv-65.jpg";
+import fridgeImg from "@/assets/prizes/refrigerator-nofrost.jpg";
+import washerImg from "@/assets/prizes/washing-machine.jpg";
+import acImg from "@/assets/prizes/split-ac.jpg";
+import grandPrizeImg from "@/assets/prizes/grand-prize-100k.jpg";
+import secondPrizeImg from "@/assets/prizes/second-prize-50k.jpg";
+import thirdPrizeImg from "@/assets/prizes/third-prize-25k.jpg";
+import encouragementImg from "@/assets/prizes/encouragement-5k.jpg";
 
 export type CategoryKey = "phones" | "appliances" | "cash";
 
@@ -7,11 +20,12 @@ export interface PrizeItem {
   id: string;
   name: string;
   icon: LucideIcon;
+  image: string;
   shortDesc: string;
   value: string;
   description: string;
   features: string[];
-  quantity: number; // عدد الجوائز المتاحة في السحب
+  quantity: number;
 }
 
 export interface PrizeCategory {
