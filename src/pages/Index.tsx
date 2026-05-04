@@ -370,6 +370,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+          <div className="mb-6">
+            <AllDrawsNotice />
+          </div>
 
 
       {/* Periodic Prize Draw */}
