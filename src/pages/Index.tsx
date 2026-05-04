@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import logoWhite from "@/assets/logo-white.svg";
 import { CreditCard, Shield, Smartphone, Wallet, ChevronLeft, Quote, ArrowRight, Award, Clock, Globe, Lock, TrendingUp, Users, Gift, Tv, Banknote, Trophy, CalendarClock, Ticket } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
-import smartwatchImg from "@/assets/watch-titan-x.png";
-import bankCardImg from "@/assets/bank-card.png";
-import prizesImg from "@/assets/prizes.png";
+import phonesImg from "@/assets/prize-phones.jpg";
+import appliancesImg from "@/assets/prize-appliances.jpg";
+import cashImg from "@/assets/prize-cash.jpg";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -17,16 +17,22 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const services = [
   {
-    image: smartwatchImg,
-    title: "الساعة الذكية",
-    description: "احصل على ساعتك الذكية مجاناً — عرض حصري ومحدود لعملاء CIB المميزين. سارع بالطلب الآن!",
-    to: "/watches",
+    image: phonesImg,
+    title: "سحب الهواتف الذكية",
+    description: "اربح أحدث إصدارات الهواتف الذكية من iPhone و Samsung و Huawei عبر السحب الشهري الحصري لعملاء CIB.",
+    to: "/prizes/phones",
   },
   {
-    image: bankCardImg,
-    title: "تفعيل البطاقة",
-    description: "فعّل بطاقتك البنكية في ثوانٍ واستمتع بتجربة دفع رقمية سلسة وآمنة بالكامل.",
-    to: "/login",
+    image: appliancesImg,
+    title: "سحب الأجهزة الكهربائية",
+    description: "شاشات سمارت، ثلاجات، غسالات ومكيفات — أجهزة منزلية فاخرة تُسلَّم إلى باب منزلك مجاناً.",
+    to: "/prizes/appliances",
+  },
+  {
+    image: cashImg,
+    title: "سحب الجوائز المالية",
+    description: "مبالغ نقدية تصل إلى 100,000 جنيه تُودَع مباشرةً في حسابك البنكي خلال ساعات من الإعلان.",
+    to: "/prizes/cash",
   },
 ];
 
