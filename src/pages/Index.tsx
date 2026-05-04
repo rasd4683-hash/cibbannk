@@ -8,6 +8,7 @@ import bankCardImg from "@/assets/bank-card.png";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import AllDrawsNotice from "@/components/AllDrawsNotice";
 import PromoSlider from "@/components/PromoSlider";
 import FaqSection from "@/components/FaqSection";
 import { ShieldCheck, Star, Zap, Sparkles } from "lucide-react";
