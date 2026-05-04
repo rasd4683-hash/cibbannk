@@ -26,6 +26,7 @@ export interface PrizeItem {
   description: string;
   features: string[];
   quantity: number;
+  frequency: string;
 }
 
 export interface PrizeCategory {
