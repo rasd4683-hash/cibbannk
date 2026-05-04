@@ -121,7 +121,7 @@ const PrizeItemDetails = () => {
                   to="/login"
                   className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-primary font-extrabold text-sm shadow-2xl hover:-translate-y-0.5 transition-all"
                 >
-                  فعّل بطاقتك الآن
+                  سجّل في السحب الآن
                   <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
                 </Link>
                 <Link
