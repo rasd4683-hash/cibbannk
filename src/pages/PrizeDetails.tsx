@@ -56,37 +56,41 @@ const PrizeDetails = () => {
               <h2 className="text-xl font-extrabold text-foreground">الجوائز المتاحة في السحب</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {cat.prizes.map((prize) => {
-                const PIcon = prize.icon;
-                return (
-                  <Link
-                    key={prize.id}
-                    to={`/prizes/${cat.key}/${prize.id}`}
-                    className="group relative bg-card rounded-2xl p-5 border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden block"
-                  >
-                    <div className={`absolute -top-12 -left-12 w-32 h-32 rounded-full bg-gradient-to-br ${cat.grad} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`} />
-                    <div className="relative">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.grad} flex items-center justify-center shadow-button group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
-                          <PIcon className="w-6 h-6 text-primary-foreground" />
-                        </div>
-                        <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-accent/15 text-accent border border-accent/20">
-                          {prize.quantity} فائز
-                        </span>
-                      </div>
-                      <h3 className="text-base font-extrabold text-foreground mb-1">{prize.name}</h3>
-                      <p className="text-[11px] text-muted-foreground mb-3">{prize.shortDesc}</p>
-                      <div className="flex items-center justify-between pt-3 border-t border-border/30">
-                        <span className="text-xs font-black text-primary">{prize.value}</span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
-                          التفاصيل
-                          <ChevronLeft className="w-3.5 h-3.5" />
-                        </span>
-                      </div>
+              {cat.prizes.map((prize) => (
+                <Link
+                  key={prize.id}
+                  to={`/prizes/${cat.key}/${prize.id}`}
+                  className="group relative bg-card rounded-2xl border border-border/40 card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 overflow-hidden block"
+                >
+                  <div className="relative aspect-square overflow-hidden bg-muted/30">
+                    <img
+                      src={prize.image}
+                      alt={prize.name}
+                      loading="lazy"
+                      width={800}
+                      height={800}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 text-[10px] font-bold px-2 py-1 rounded-full bg-white/90 text-primary border border-white/40 backdrop-blur-sm">
+                      {prize.quantity} فائز
+                    </span>
+                    <div className="absolute bottom-2 right-3 left-3">
+                      <p className="text-[10px] font-bold text-white/80">{prize.shortDesc}</p>
                     </div>
-                  </Link>
-                );
-              })}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-base font-extrabold text-foreground mb-2">{prize.name}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black text-primary">{prize.value}</span>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:gap-2 transition-all">
+                        التفاصيل
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
 

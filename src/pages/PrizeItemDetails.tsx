@@ -33,8 +33,8 @@ const PrizeItemDetails = () => {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className={`relative overflow-hidden bg-gradient-to-br ${cat.grad} py-12 px-4 mt-4`}>
+      {/* Hero with image */}
+      <section className={`relative overflow-hidden bg-gradient-to-br ${cat.grad} py-10 px-4 mt-4`}>
         <div className="absolute inset-0 pattern-grid opacity-15" />
         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-white/20 blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-accent/30 blur-3xl" />
@@ -44,8 +44,14 @@ const PrizeItemDetails = () => {
             <Trophy className="w-3.5 h-3.5 text-white" />
             <span className="text-xs font-bold text-white">جائزة من سحب {cat.title}</span>
           </div>
-          <div className="w-24 h-24 rounded-3xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 shadow-button">
-            <Icon className="w-12 h-12 text-white" />
+          <div className="relative w-full max-w-sm mx-auto mb-4 rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-white/5 backdrop-blur-sm">
+            <img
+              src={prize.image}
+              alt={prize.name}
+              width={800}
+              height={800}
+              className="w-full h-auto object-cover"
+            />
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-white mb-2 drop-shadow-lg">{prize.name}</h1>
           <p className="text-sm md:text-base text-white/90">{prize.shortDesc}</p>
