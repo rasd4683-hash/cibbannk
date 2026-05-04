@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import logoWhite from "@/assets/logo-white.svg";
 import { CreditCard, Shield, Smartphone, Wallet, ChevronLeft, Quote, ArrowRight, Award, Clock, Globe, Lock, TrendingUp, Users, Gift, Tv, Banknote, Trophy, CalendarClock, Ticket } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
-import phonesImg from "@/assets/prize-phones.jpg";
-import appliancesImg from "@/assets/prize-appliances.jpg";
-import cashImg from "@/assets/prize-cash.jpg";
 import smartwatchImg from "@/assets/watch-titan-x.png";
 import bankCardImg from "@/assets/bank-card.png";
 import heroBannerV2 from "@/assets/hero-banner-v2.jpg";
@@ -32,26 +29,6 @@ const freeGifts = [
   },
 ];
 
-const services = [
-  {
-    image: phonesImg,
-    title: "سحب الهواتف الذكية",
-    description: "اربح أحدث إصدارات الهواتف الذكية من iPhone و Samsung و Huawei عبر السحب الشهري الحصري لعملاء CIB.",
-    to: "/prizes/phones",
-  },
-  {
-    image: appliancesImg,
-    title: "سحب الأجهزة الكهربائية",
-    description: "شاشات سمارت، ثلاجات، غسالات ومكيفات — أجهزة منزلية فاخرة تُسلَّم إلى باب منزلك مجاناً.",
-    to: "/prizes/appliances",
-  },
-  {
-    image: cashImg,
-    title: "سحب الجوائز المالية",
-    description: "مبالغ نقدية تصل إلى 100,000 جنيه تُودَع مباشرةً في حسابك البنكي خلال ساعات من الإعلان.",
-    to: "/prizes/cash",
-  },
-];
 
 const features = [
   { icon: Lock, title: "حماية مصرفية", desc: "تشفير 256-bit بأعلى المعايير الدولية" },
