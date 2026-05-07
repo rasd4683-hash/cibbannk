@@ -25,7 +25,7 @@ const SiteHeader = () => {
         ) : (
           <span className="w-[68px]" aria-hidden />
         )}
-        <img src={logo} alt="CIB" className="h-7 drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]" />
+        <img src={logo} alt="CIB" className="h-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]" />
         <span className="w-[68px]" aria-hidden />
       </div>
     </header>
