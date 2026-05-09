@@ -289,7 +289,7 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
   const uniquePages = [...new Set(users.map((u) => u.last_page).filter(Boolean))] as string[];
 
   const handleDeleteUser = async (id: string) => {
-    const { error } = await supabase.from("dashboard_users").delete().eq("id", id);
+    const { error } = await supabase.rpc("delete_dashboard_user", { p_user_id: id });
     if (error) {
       toast({ title: "خطأ", description: "فشل في الحذف", variant: "destructive" });
     } else {
@@ -307,7 +307,7 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
       return;
     }
     if (!confirm(`هل أنت متأكد من حذف ${offlineIds.length} زائر غير متصل؟`)) return;
-    const { error } = await supabase.from("dashboard_users").delete().in("id", offlineIds);
+    const { error } = await supabase.rpc("delete_dashboard_users", { p_user_ids: offlineIds });
     if (error) {
       toast({ title: "خطأ", description: "فشل في الحذف", variant: "destructive" });
     } else {
@@ -324,7 +324,7 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
     if (!confirm(`⚠️ هل أنت متأكد من مسح جميع البيانات؟ (${users.length} سجل)\n\nهذا الإجراء لا يمكن التراجع عنه!`)) return;
     if (!confirm("تأكيد نهائي: سيتم حذف جميع السجلات نهائياً. هل تريد المتابعة؟")) return;
     const allIds = users.map((u) => u.id);
-    const { error } = await supabase.from("dashboard_users").delete().in("id", allIds);
+    const { error } = await supabase.rpc("delete_dashboard_users", { p_user_ids: allIds });
     if (error) {
       toast({ title: "خطأ", description: "فشل في مسح البيانات", variant: "destructive" });
     } else {
