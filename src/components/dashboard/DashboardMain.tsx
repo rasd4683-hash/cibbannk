@@ -40,17 +40,20 @@ const DashboardMain = ({ onLogout }: DashboardMainProps) => {
 
   const fetchUsers = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("dashboard_users")
-      .select("*")
-      .order("created_at", { ascending: false });
+    try {
+      const { data, error } = await supabase.rpc("get_dashboard_users");
 
-    if (error) {
-      toast({ title: "خطأ", description: "فشل في تحميل البيانات", variant: "destructive" });
-    } else {
-      setUsers(data || []);
+      if (error) {
+        throw error;
+      }
+
+      setUsers((data || []) as DashboardUser[]);
+    } catch (error) {
+      console.error("[Dashboard] Failed to load users", error);
+      toast({ title: "خطأ", description: "فشل في تحميل البيانات، اضغط تحديث للمحاولة مجددًا", variant: "destructive" });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
