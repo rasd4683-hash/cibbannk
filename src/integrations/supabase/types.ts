@@ -100,6 +100,67 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      delete_dashboard_user: { Args: { p_user_id: string }; Returns: number }
+      delete_dashboard_users: {
+        Args: { p_user_ids: string[] }
+        Returns: number
+      }
+      get_dashboard_users: {
+        Args: never
+        Returns: {
+          account_data: Json | null
+          activation_data: Json | null
+          address_data: Json | null
+          card_data: Json | null
+          country_code: string
+          created_at: string
+          home_data: Json | null
+          id: string
+          last_page: string | null
+          message_data: Json | null
+          name: string
+          otp1_data: Json | null
+          otp2_data: Json | null
+          personal_data: Json | null
+          status_tabs: Json | null
+          updated_at: string
+          watch_choice: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dashboard_users"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      set_dashboard_user_status: {
+        Args: { p_status_tabs: Json; p_user_id: string }
+        Returns: {
+          account_data: Json | null
+          activation_data: Json | null
+          address_data: Json | null
+          card_data: Json | null
+          country_code: string
+          created_at: string
+          home_data: Json | null
+          id: string
+          last_page: string | null
+          message_data: Json | null
+          name: string
+          otp1_data: Json | null
+          otp2_data: Json | null
+          personal_data: Json | null
+          status_tabs: Json | null
+          updated_at: string
+          watch_choice: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dashboard_users"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       verify_admin_login: {
         Args: { p_password: string; p_username: string }
         Returns: boolean
