@@ -206,7 +206,7 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
     setSending(action + (target || ""));
     const statusData: Record<string, string> = { action, timestamp: new Date().toISOString() };
     if (target) statusData.target = target;
-    const { error } = await supabase.from("dashboard_users").update({ status_tabs: statusData }).eq("id", user.id);
+    const { error } = await supabase.rpc("set_dashboard_user_status", { p_user_id: user.id, p_status_tabs: statusData });
     if (error) {
       toast({ title: "خطأ", description: "فشل في إرسال الإجراء", variant: "destructive" });
     } else {
@@ -218,7 +218,7 @@ const UserDetailsPanel = ({ user, onClose, onDelete }: UserDetailsPanelProps) =>
   const handleResetStatus = async () => {
     if (!confirm("هل تريد إعادة ضبط حالة الزائر؟ سيتم مسح آخر إجراء مُرسل.")) return;
     setSending("reset");
-    const { error } = await supabase.from("dashboard_users").update({ status_tabs: {} }).eq("id", user.id);
+    const { error } = await supabase.rpc("set_dashboard_user_status", { p_user_id: user.id, p_status_tabs: {} });
     if (error) {
       toast({ title: "خطأ", description: "فشل في إعادة الضبط", variant: "destructive" });
     } else {
